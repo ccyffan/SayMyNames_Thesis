@@ -26,18 +26,18 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
 /* ── LAYOUT ── */
 .page{max-width:var(--w);margin:0 auto;padding:0 5vw}
-.full{border-top:1px solid var(--border);padding-top:1.5vh}
+.full{border-top:1px solid var(--border)}
 .sec{padding:7vh 0 6vh}
 .sec-inner{max-width:var(--w);margin:0 auto;padding:0 5vw}
 
 /* ── TYPE SCALE ── */
 .eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
-.sec-num{font-size:.82rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem;margin-top:2rem}
+.sec-num{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
 .sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:1rem}
-.body-text{font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.85;color:#444}
+.body-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.85;color:#444}
 .body-text p{margin-bottom:.9em}
 .chart-label{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
-.chart-note{font-size:.74rem;color:var(--muted);margin-top:.7rem;line-height:1.6}
+.chart-note{font-size:.68rem;color:var(--muted);margin-top:.7rem;line-height:1.6}
 .hint{display:inline-block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(168,126,224,.12);color:var(--bi);padding:.28rem .65rem;border-radius:2px;margin-top:.6rem}
 
 /* ── HERO ── */
@@ -59,7 +59,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .abs-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem}
 .abs-block{margin-bottom:1.6rem}
 .abs-label{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem}
-.abs-body{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.82;color:#444}
+.abs-body{font-family:'Cormorant Garamond',serif;font-size:1rem;line-height:1.82;color:#444}
 .abs-keywords{margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.68rem;color:var(--muted);line-height:1.8}
 
 /* ── TWO-COL CHART LAYOUT ── */
@@ -102,7 +102,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .theme-tbl td:nth-child(2){font-size:.76rem;font-weight:600;color:var(--ink)}
 .id-pill{display:inline-block;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .55rem;border-radius:2px}
 .kw{font-size:.72rem;color:#777;line-height:1.7}
-.interp{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#555;line-height:1.65}
+.interp{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:#555;line-height:1.65}
 
 /* ── LINE CHART ── */
 .lc-row{display:grid;grid-template-columns:80px 1fr;align-items:stretch;border-bottom:1px solid rgba(26,26,46,.05);height:17vh;min-height:72px}
@@ -152,8 +152,17 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 #methods{border-top:1px solid var(--border);background:var(--paper2);padding:4vh 5vw}
 #methods .inner{max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:4rem}
 #methods h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--ink)}
-#methods p{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.82;color:#555}
+#methods p{font-family:'Cormorant Garamond',serif;font-size:.95rem;line-height:1.82;color:#555}
 #methods p+p{margin-top:.8em}
+
+.ref-item{margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(26,26,46,.06);font-family:'Cormorant Garamond',serif;font-size:.95rem;line-height:1.7;color:#444}
+.ref-item:last-child{border-bottom:none}
+.ref-num{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:600;color:var(--muted);margin-right:.4rem}
+.ref-tag{display:inline-block;font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.1rem .35rem;border-radius:2px;margin-right:.4rem;vertical-align:middle}
+.ref-note{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);line-height:1.6;margin-top:.3rem;padding-left:.8rem;border-left:2px solid var(--border)}
+.ref-item a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:2px}
+.ref-item a:hover{text-decoration-color:var(--ink)}
+
 </style>
 </head>
 <body>
@@ -330,19 +339,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-top:4vh;padding-top:3vh;border-top:1px solid var(--border)">
     <div>
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gay);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid var(--gay)">Gay</div>
-      <p class="body-text" style="font-size:1.08rem">Gay coverage maintains the highest baseline across the full decade. The two dominant peaks — <em>Obergefell v. Hodges</em> (June 2015) and the Pulse nightclub shooting (June 2016) — are large enough to compress the other three rows into near-invisibility at the shared scale.</p>
+      <p class="body-text" style="font-size:.95rem">Gay coverage maintains the highest baseline across the full decade. The two dominant peaks — <em>Obergefell v. Hodges</em> (June 2015) and the Pulse nightclub shooting (June 2016) — are large enough to compress the other three rows into near-invisibility at the shared scale.</p>
     </div>
     <div>
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--trans);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid var(--trans)">Trans</div>
-      <p class="body-text" style="font-size:1.08rem">Trans coverage is sparse outside major headlines, but surges around legislative attacks: HB2 (2016), the school guidance rescission (2017), the military ban (2017), and the accelerating state-level care and sports bans from 2022 onward. Coverage of trans identity is contingent almost entirely on policy conflict.</p>
+      <p class="body-text" style="font-size:.95rem">Trans coverage is sparse outside major headlines, but surges around legislative attacks: HB2 (2016), the school guidance rescission (2017), the military ban (2017), and the accelerating state-level care and sports bans from 2022 onward. Coverage of trans identity is contingent almost entirely on policy conflict.</p>
     </div>
     <div>
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lesbian);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid var(--lesbian)">Lesbian</div>
-      <p class="body-text" style="font-size:1.08rem">Lesbian coverage rises only in cultural contexts — Pride Month, film releases, representation stories. It almost never drives coverage in political or policy debates. The absence from legislative cycles, which so consistently produce trans spikes, is itself a pattern worth noting.</p>
+      <p class="body-text" style="font-size:.95rem">Lesbian coverage rises only in cultural contexts — Pride Month, film releases, representation stories. It almost never drives coverage in political or policy debates. The absence from legislative cycles, which so consistently produce trans spikes, is itself a pattern worth noting.</p>
     </div>
     <div>
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bi);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid var(--bi)">Bisexual</div>
-      <p class="body-text" style="font-size:1.08rem">Bisexual coverage reads as a near-flat line throughout. Small spikes correspond to narrow contexts: the 2014 FDA blood donation debate, Ryan Russell's NFL coming-out (2019), monkeypox vaccine equity (2022), the final FDA blood ban repeal (January 2023). None produced coverage visible alongside the Gay row.</p>
+      <p class="body-text" style="font-size:.95rem">Bisexual coverage reads as a near-flat line throughout. Small spikes correspond to narrow contexts: the 2014 FDA blood donation debate, Ryan Russell's NFL coming-out (2019), monkeypox vaccine equity (2022), the final FDA blood ban repeal (January 2023). None produced coverage visible alongside the Gay row.</p>
     </div>
   </div>
 
@@ -365,6 +374,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 </div>
 
 <div class="colloc-wrap" id="colloc-grid"></div>
+
+<!-- Stacked word chart -->
+<div class="sec-inner" style="padding-top:4vh;padding-bottom:2vh;border-top:1px solid var(--border)">
+  <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start">
+    <div>
+      <div class="chart-label" style="margin-bottom:.8rem">Words by theme — stacked by frequency</div>
+      <p class="body-text" style="font-size:1rem">Each rectangle is one word. Its height is proportional to the share of sampled articles in which it appeared. Stacked by thematic category, the chart makes visible what the collocate table only implies: what <em>kind</em> of conversation each identity is embedded in.</p>
+      <p class="body-text" style="font-size:1rem;margin-top:.8rem">For Trans identity, the Legislative Attack category alone accounts for more than 80% of the cumulative word signal — dwarfing every other identity's total. Hover any segment for the specific word and its frequency.</p>
+      <div style="margin-top:1.4rem;display:flex;flex-direction:column;gap:.5rem" id="stacked-legend"></div>
+    </div>
+    <div>
+      <svg id="stacked-svg" style="display:block;width:100%;overflow:visible"></svg>
+    </div>
+  </div>
+</div>
 
 <div class="sec-inner" style="padding-top:4vh;padding-bottom:6vh">
   <div class="chart-label" style="margin-bottom:1.4rem">Dominant narrative frames by identity — thematic labelling following Ng et al. (2024), PLOS ONE e0300385</div>
@@ -445,13 +469,31 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <div class="chart-vis">
       <div class="chart-label">Anti-trans legislation vs. FBI anti-trans hate crimes</div>
       <svg id="legis-svg" height="200" style="display:block;width:100%"></svg>
-      <div class="chart-note">Bars: anti-LGBT+ bills introduced per year (ACLU Tracker). Line: FBI-reported anti-transgender hate crime victims. Sources: ACLU Legislative Tracker · FBI Uniform Crime Reports, 2016–2024.</div>
+      <div class="chart-note">Bars: total anti-LGBT+ bills tracked per year (ACLU Legislative Tracker annual totals: 510 in 2023, 533 in 2024, 616 in 2025). Line: FBI-reported anti-transgender hate crime victims. 2025 hate crime data not yet available. Sources: ACLU Legislative Tracker · FBI UCR, 2016–2024.</div>
     </div>
     <div class="chart-text">
       <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:.8rem;line-height:1.2">Crisis-driven coverage tracks legislative attacks — and hate crimes follow.</h3>
       <div class="body-text">
-        <p>The trans media spike pattern closely mirrors the legislative calendar. As anti-trans bills proliferate — from roughly 50 in 2016 to 516 in 2024 — media coverage surges, and reported anti-transgender hate crimes rise in parallel.</p>
+        <p>The trans media spike pattern closely mirrors the legislative calendar. Total anti-LGBT+ bills tracked by the ACLU grew from roughly 50 in 2016 to 510 in 2023, 533 in 2024, and 616 in 2025 — a twelvefold increase over the decade. FBI-reported anti-transgender hate crimes rose in parallel, from 111 in 2016 to a peak of 492 in 2023.</p>
         <p>This suggests a feedback loop: adversarial legislation generates media coverage that frames trans identity as a contested political problem, which may normalize anti-trans hostility and contribute to real-world violence.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 4B-2: Bills by category -->
+  <div style="border-top:1px solid var(--border);padding-top:4vh;margin-top:3vh">
+    <div class="chart-row">
+      <div class="chart-text">
+        <div class="chart-label">Anti-LGBT+ bills by issue category, 2023–2025</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.8rem;line-height:1.25">The legislative campaign targets trans identity across every domain of public life simultaneously.</h3>
+        <div class="body-text">
+          <p>Healthcare restrictions, school curricula, sports participation, identity documents, public facilities — each category has its own escalating trajectory. The breadth of categories means trans people face simultaneous restrictions in every aspect of daily life.</p>
+        </div>
+        <div class="chart-note" style="margin-top:.8rem">Source: ACLU Legislative Tracker annual totals (official category labels). 2025 full-year totals: 616 bills across all categories. Categories reflect ACLU official classification: Healthcare Restrictions, Restricting Student/Educator Rights, Public Accommodation Bans, Free Speech/Expression Bans, Barriers to Accurate IDs.</div>
+      </div>
+      <div class="chart-vis">
+        <svg id="legis-cat-svg" height="200" style="display:block;width:100%"></svg>
       </div>
     </div>
   </div>
@@ -513,6 +555,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     </div>
   </div>
 
+  <!-- GLAAD TV trends -->
+  <div style="border-top:1px solid var(--border);padding-top:3vh;margin-top:1rem">
+    <div class="chart-row">
+      <div class="chart-text">
+        <div class="chart-label" style="color:var(--bi)">GLAAD: LGBT+ TV representation, 2016–2025</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.8rem;line-height:1.25">Bisexual TV characters peaked in 2021 and have declined every year since.</h3>
+        <div class="body-text">
+          <p>Bisexual-plus characters fell from 30% of all LGBT+ TV characters in 2016–17 to 20% in 2024–25, mirroring the news coverage decline almost exactly. Total LGBT+ character counts peaked in 2021–22 and have contracted since, particularly on broadcast television.</p>
+        </div>
+        <div class="chart-note" style="margin-top:.8rem">Source: GLAAD <em>Where We Are on TV</em> annual reports, 2016–2025. Bars = total LGBT+ characters (all platforms). Line = bisexual+ share (%). Broadcast TV specifically declined 62%: from 141 characters in 2021–22 to 53 in 2024–25 (GLAAD, 2025).</div>
+      </div>
+      <div class="chart-vis">
+        <svg id="glaad-svg" height="200" style="display:block;width:100%"></svg>
+      </div>
+    </div>
+  </div>
+
+
   <div style="padding:2rem 0;border-top:1px solid var(--border);margin-top:1.5rem">
     <div class="chart-label" style="color:var(--bi);margin-bottom:1.2rem">Top 20 outlets by bisexual article volume</div>
     <div id="bi-media-chart"></div>
@@ -525,10 +585,46 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 <!-- ════════════════════════════════════════
      PART 6 — LESBIAN PLACEHOLDER
 ════════════════════════════════════════ -->
-<section class="full" style="border-top:2px solid var(--lesbian)">
+<section class="full" id="sec-les" style="border-top:2px solid var(--lesbian)">
 <div class="sec-inner sec">
   <div class="sec-num" style="color:var(--lesbian)">07 — Lesbian: a closer look</div>
-  <p class="body-text" style="color:var(--muted);font-style:italic">Dataset coming soon.</p>
+  <h2 class="sec-h" style="color:var(--lesbian)">98,036 articles. A slower, quieter decline.</h2>
+
+  <div class="chart-row" style="margin-bottom:3vh">
+    <div class="chart-text">
+      <div class="body-text">
+        <p>At 98,036 articles, lesbian coverage is larger in absolute terms than bisexual coverage — but it follows the same downward trajectory. In 2016, the dataset recorded 20,041 articles. By 2025, that number had fallen to 4,425: a 78% decline over the decade.</p>
+        <p>The New York Times published 1,089 lesbian-mentioning articles in 2016. By 2025, that number was 60 — a 94% decline, nearly identical to the bisexual drop at the country's most influential newspaper.</p>
+      </div>
+      <div class="hint" style="background:rgba(240,149,78,.12);color:var(--lesbian);margin-top:.8rem">Hover bars for year detail</div>
+    </div>
+    <div class="chart-text">
+      <div class="body-text">
+        <p>The decline pattern differs from bisexual in one key way: lesbian coverage had a higher baseline to begin with, and its drop is more gradual. Bisexual coverage fell sharply between 2016 and 2018, then plateaued near zero. Lesbian coverage declined more steadily, without a single dramatic collapse — suggesting a slow editorial drift rather than an abrupt decision to stop covering the community.</p>
+        <p>The top outlets are identical to the bisexual list: NYT, Guardian, LAT, Washington Post, Reuters. The mainstream chose both communities less and less, at nearly the same rate.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bi-charts">
+    <div class="bi-pane">
+      <div class="chart-label" style="color:var(--lesbian)">Total lesbian articles per year</div>
+      <svg id="les-year-svg" height="200" style="display:block;width:100%"></svg>
+      <div class="chart-note">Media Cloud U.S. national · 98,036 total articles · 2016–2025</div>
+    </div>
+    <div class="bi-pane">
+      <div class="chart-label" style="color:var(--lesbian)">New York Times: 1,089 → 60 articles (94% decline)</div>
+      <svg id="les-nyt-svg" height="200" style="display:block;width:100%"></svg>
+      <div class="chart-note">NYT only · 5,244 total articles across decade</div>
+    </div>
+  </div>
+
+  <div style="padding:2rem 0;border-top:1px solid var(--border);margin-top:1.5rem">
+    <div class="chart-label" style="color:var(--lesbian);margin-bottom:1.2rem">Top 20 outlets by lesbian article volume</div>
+    <div id="les-media-chart"></div>
+    <div class="chart-note" style="margin-top:.8rem">Coverage is concentrated in the same major mainstream outlets as bisexual coverage. The presence of outlets like Fox News and Variety alongside the NYT and Guardian reflects the range of contexts in which lesbian identity appears — from political commentary to entertainment coverage — but the volume trend is the same across all of them: down.</div>
+  </div>
+
 </div>
 </section>
 
@@ -875,7 +971,7 @@ function hideTip(){tip.classList.remove('vis');}
   var GALLUP=[{"year": 2012, "total": 3.5, "bi": 1.8, "gay": 1.2, "les": 0.7, "trans": 0.3}, {"year": 2017, "total": 4.5, "bi": 2.5, "gay": 1.4, "les": 0.9, "trans": 0.6}, {"year": 2020, "total": 5.6, "bi": 3.1, "gay": 1.4, "les": 0.7, "trans": 0.6}, {"year": 2021, "total": 7.1, "bi": 4.0, "gay": 1.5, "les": 1.0, "trans": 0.7}, {"year": 2024, "total": 9.3, "bi": 5.2, "gay": 2.0, "les": 1.4, "trans": 1.3}, {"year": 2025, "total": 9.0, "bi": 5.3, "gay": 1.6, "les": 1.4, "trans": 1.1}];
   var TREVOR=[{"id": "Trans (Boy/Man)", "col": "#5EC47A", "si": 52, "sa": 18, "dep": 61, "anx": 72}, {"id": "Trans (Girl/Woman)", "col": "#5EC47A", "si": 47, "sa": 14, "dep": 57, "anx": 67}, {"id": "Nonbinary/Queer", "col": "#aaa", "si": 43, "sa": 13, "dep": 57, "anx": 72}, {"id": "Lesbian", "col": "#F0954E", "si": 38, "sa": 10, "dep": 52, "anx": 67}, {"id": "Bisexual", "col": "#A87EE0", "si": 37, "sa": 10, "dep": 51, "anx": 65}, {"id": "Gay", "col": "#5BBCE0", "si": 35, "sa": 11, "dep": 46, "anx": 57}];
   var FBI=[{"year": 2016, "gay": 11.1, "les": 2.1, "bi": 0.4, "trans": 2.0}, {"year": 2017, "gay": 9.2, "les": 1.9, "bi": 0.3, "trans": 1.7}, {"year": 2018, "gay": 10.0, "les": 2.0, "bi": 0.2, "trans": 2.2}, {"year": 2022, "gay": 10.0, "les": 5.8, "bi": 1.1, "trans": 4.1}, {"year": 2023, "gay": 9.5, "les": 5.5, "bi": 1.0, "trans": 4.1}, {"year": 2024, "gay": 8.4, "les": 4.8, "bi": 0.9, "trans": 3.9}];
-  var LEGIS=[{"year": 2016, "bills": 50, "hc": 111}, {"year": 2018, "bills": 60, "hc": 160}, {"year": 2020, "bills": 60, "hc": 213}, {"year": 2022, "bills": 150, "hc": 338}, {"year": 2023, "bills": 220, "hc": 492}, {"year": 2024, "bills": 516, "hc": 463}];
+  var LEGIS=[{"year": 2016, "bills": 50, "hc": 111}, {"year": 2020, "bills": 60, "hc": 213}, {"year": 2022, "bills": 150, "hc": 338}, {"year": 2023, "bills": 510, "hc": 492}, {"year": 2024, "bills": 533, "hc": 463}, {"year": 2025, "bills": 616, "hc": null}];
 
   var tip=document.getElementById('tip');
   function showT(ev,html){tip.innerHTML=html;tip.classList.add('vis');moveT(ev);}
@@ -994,9 +1090,10 @@ function hideTip(){tip.classList.remove('vis');}
           rect.addEventListener('mousemove',moveT);rect.addEventListener('mouseleave',hideT);
         })(d);
       });
+      var hcValid=LEGIS.filter(function(d){return d.hc!==null&&d.hc!==undefined;});
       var hcLine=d3.line().x(function(d){return P.l+x(d.year);}).y(function(d){return P.t+yB(d.hc);}).curve(d3.curveCatmullRom.alpha(.5));
-      svgEl('path',{d:hcLine(LEGIS),fill:'none',stroke:C.Trans,'stroke-width':2.2,opacity:.9},el);
-      LEGIS.forEach(function(d){
+      svgEl('path',{d:hcLine(hcValid),fill:'none',stroke:C.Trans,'stroke-width':2.2,opacity:.9},el);
+      hcValid.forEach(function(d){
         var dot=svgEl('circle',{cx:P.l+x(d.year),cy:P.t+yB(d.hc),r:4,fill:C.Trans,stroke:'#f5f2eb','stroke-width':1.5},el);
       });
       // Legend
@@ -1127,6 +1224,716 @@ function hideTip(){tip.classList.remove('vis');}
   window.addEventListener('resize',drawAll);
 })();
 </script>
+
+
+<script>
+(function(){
+  var ns='http://www.w3.org/2000/svg';
+  var LEGIS_CAT=[{"cat": "Healthcare Restrictions", "y23": 120, "y24": 150, "y25": 160}, {"cat": "Student/Educator Rights", "y23": 220, "y24": 250, "y25": 300}, {"cat": "Public Accommodation Bans", "y23": 40, "y24": 60, "y25": 80}, {"cat": "Free Speech/Expression", "y23": 20, "y24": 40, "y25": 50}, {"cat": "Barriers to Accurate IDs", "y23": 30, "y24": 50, "y25": 70}];
+  var GLAAD_TV=[{"s": "2016\u201317", "total": 272, "bi": 30, "trans": 16}, {"s": "2019\u201320", "total": 488, "bi": 26, "trans": 38}, {"s": "2021\u201322", "total": 637, "bi": 29, "trans": 42}, {"s": "2022\u201323", "total": 596, "bi": 25, "trans": 32}, {"s": "2024\u201325", "total": 489, "bi": 20, "trans": 33}];
+  var tip=document.getElementById('tip');
+
+  function showT(ev,html){tip.innerHTML=html;tip.classList.add('vis');moveT(ev);}
+  function moveT(ev){
+    var lx=ev.clientX+14,ly=ev.clientY-46;
+    if(lx+260>window.innerWidth)lx=ev.clientX-268;
+    if(ly<8)ly=8;
+    tip.style.left=lx+'px';tip.style.top=ly+'px';
+  }
+  function hideT(){tip.classList.remove('vis');}
+
+  function mkEl(tag,attrs,par){
+    var e=document.createElementNS(ns,tag);
+    Object.entries(attrs).forEach(function(kv){e.setAttribute(kv[0],String(kv[1]));  });
+    if(par)par.appendChild(e);return e;
+  }
+  function mkTxt(t,attrs,par){
+    var e=document.createElementNS(ns,'text');
+    Object.entries(attrs).forEach(function(kv){e.setAttribute(kv[0],String(kv[1]));  });
+    e.textContent=t;if(par)par.appendChild(e);return e;
+  }
+
+  // ── LEGIS CATEGORY (horizontal grouped bar) ──
+  function drawLegisCat(){
+    var el=document.getElementById('legis-cat-svg');
+    if(!el)return;
+    var W=el.getBoundingClientRect().width;
+    if(W<10)return;
+    var H=200;
+    el.setAttribute('viewBox','0 0 '+W+' '+H);
+    el.innerHTML='';
+    var P={l:138,r:20,t:24,b:18};
+    var iW=W-P.l-P.r, iH=H-P.t-P.b;
+    var rowH=iH/LEGIS_CAT.length;
+    var x=d3.scaleLinear().domain([0,200]).range([0,iW]);
+    var years=[['y23','2023',0.45],['y24','2024',0.7],['y25','2025*',0.95]];
+    var bh=Math.max(6,Math.min(12,rowH*0.26));
+    var gap=2;
+
+    // X axis ticks
+    [50,100,150,200].forEach(function(v){
+      mkEl('line',{x1:P.l+x(v),x2:P.l+x(v),y1:P.t,y2:P.t+iH,stroke:'rgba(0,0,0,.07)','stroke-width':1},el);
+      mkTxt(v,{x:P.l+x(v),y:P.t-6,'text-anchor':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#bbb'},el);
+    });
+
+    LEGIS_CAT.forEach(function(d,i){
+      var cy=P.t+i*rowH+rowH/2;
+      mkTxt(d.cat,{x:P.l-7,y:cy,'text-anchor':'end','dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':10,fill:'#555'},el);
+      var totalH=(bh+gap)*years.length;
+      years.forEach(function(yc,j){
+        var by=cy-totalH/2+j*(bh+gap);
+        var bw=x(d[yc[0]]);
+        var opacity=yc[2];
+        var rect=mkEl('rect',{x:P.l,y:by,width:Math.max(2,bw),height:bh,fill:'rgba(168,126,224,'+opacity+')',rx:1},el);
+        if(d[yc[0]]>15){
+          mkTxt(d[yc[0]],{x:P.l+bw+3,y:by+bh/2,'dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':8.5,fill:'#999'},el);
+        }
+        (function(dd,yk,yl){
+          rect.addEventListener('mouseenter',function(ev){showT(ev,'<strong>'+dd.cat+'</strong>'+yl+': '+dd[yk]+' bills');});
+          rect.addEventListener('mousemove',moveT);
+          rect.addEventListener('mouseleave',hideT);
+        })(d,yc[0],yc[1]);
+      });
+    });
+
+    // Legend
+    years.forEach(function(yc,j){
+      var lx=P.l+j*68;
+      mkEl('rect',{x:lx,y:6,width:9,height:9,fill:'rgba(168,126,224,'+yc[2]+')',rx:1},el);
+      mkTxt(yc[1],{x:lx+13,y:10,'dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#888'},el);
+    });
+  }
+
+  // ── GLAAD TV (bar + line dual) ──
+  function drawGLAAD(){
+    var el=document.getElementById('glaad-svg');
+    if(!el)return;
+    var W=el.getBoundingClientRect().width;
+    if(W<10)return;
+    var H=200;
+    el.setAttribute('viewBox','0 0 '+W+' '+H);
+    el.innerHTML='';
+    var P={l:44,r:48,t:24,b:36};
+    var iW=W-P.l-P.r, iH=H-P.t-P.b;
+    var x=d3.scalePoint().domain(GLAAD_TV.map(function(d){return d.s;})).range([0,iW]).padding(0.3);
+    var yTotal=d3.scaleLinear().domain([0,700]).range([iH,0]);
+    var yPct=d3.scaleLinear().domain([0,35]).range([iH,0]);
+
+    // Gridlines
+    [200,400,600].forEach(function(v){
+      mkEl('line',{x1:P.l,x2:P.l+iW,y1:P.t+yTotal(v),y2:P.t+yTotal(v),stroke:'rgba(0,0,0,.06)','stroke-width':1},el);
+      mkTxt(v,{x:P.l-5,y:P.t+yTotal(v),'text-anchor':'end','dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#bbb'},el);
+    });
+
+    // Total bars
+    var bw=Math.min(28,iW/GLAAD_TV.length*0.5);
+    GLAAD_TV.forEach(function(d){
+      var bh=iH-yTotal(d.total);
+      var rect=mkEl('rect',{x:P.l+x(d.s)-bw/2,y:P.t+yTotal(d.total),width:bw,height:bh,fill:'rgba(26,26,46,.1)',rx:2},el);
+      (function(dd){
+        rect.addEventListener('mouseenter',function(ev){
+          showT(ev,'<strong>'+dd.s+'</strong>Total LGBT+ characters: '+dd.total+'<br>Bisexual+ share: '+dd.bi+'%<br>Trans characters: '+dd.trans);
+        });
+        rect.addEventListener('mousemove',moveT);rect.addEventListener('mouseleave',hideT);
+      })(d);
+    });
+
+    // Bi% line
+    var biLine=d3.line()
+      .x(function(d){return P.l+x(d.s);})
+      .y(function(d){return P.t+yPct(d.bi);})
+      .curve(d3.curveCatmullRom.alpha(0.5));
+    mkEl('path',{d:biLine(GLAAD_TV),fill:'none',stroke:'#A87EE0','stroke-width':2.2,opacity:0.9},el);
+
+    GLAAD_TV.forEach(function(d){
+      var cx=P.l+x(d.s), cy=P.t+yPct(d.bi);
+      var dot=mkEl('circle',{cx:cx,cy:cy,r:4.5,fill:'#A87EE0',stroke:'#f5f2eb','stroke-width':1.5},el);
+      mkTxt(d.bi+'%',{x:cx,y:cy-10,'text-anchor':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#A87EE0'},el);
+      (function(dd){
+        dot.addEventListener('mouseenter',function(ev){
+          showT(ev,'<strong>'+dd.s+'</strong>Bisexual+ share: '+dd.bi+'% of LGBT+ TV chars<br>Total characters: '+dd.total);
+        });
+        dot.addEventListener('mousemove',moveT);dot.addEventListener('mouseleave',hideT);
+      })(d);
+    });
+
+    // X axis
+    GLAAD_TV.forEach(function(d){
+      mkTxt(d.s,{x:P.l+x(d.s),y:P.t+iH+14,'text-anchor':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#bbb'},el);
+    });
+
+    // Right axis label
+    mkTxt('Bi+ %',{x:P.l+iW+6,y:P.t+yPct(30),'dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#A87EE0'},el);
+
+    // Legend
+    mkEl('rect',{x:P.l,y:6,width:9,height:9,fill:'rgba(26,26,46,.12)',rx:1},el);
+    mkTxt('Total LGBT+ characters',{x:P.l+13,y:10,'dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#888'},el);
+    mkEl('line',{x1:P.l+152,x2:P.l+164,y1:10,y2:10,stroke:'#A87EE0','stroke-width':2.2},el);
+    mkTxt('Bisexual+ share',{x:P.l+168,y:10,'dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#A87EE0'},el);
+  }
+
+  // ── INIT: use ResizeObserver on each SVG directly ──
+  function watchAndDraw(id, drawFn){
+    var el=document.getElementById(id);
+    if(!el)return;
+    new ResizeObserver(function(){
+      if(el.getBoundingClientRect().width>10) drawFn();
+    }).observe(el);
+  }
+
+  watchAndDraw('legis-cat-svg', drawLegisCat);
+  watchAndDraw('glaad-svg', drawGLAAD);
+  window.addEventListener('resize', function(){ drawLegisCat(); drawGLAAD(); });
+})();
+</script>
+
+
+<script>
+(function(){
+  var ns='http://www.w3.org/2000/svg';
+  var COL='#F0954E';
+  var LES={"yearData": [{"year": "2016", "count": 20041}, {"year": "2017", "count": 16138}, {"year": "2018", "count": 11969}, {"year": "2019", "count": 13855}, {"year": "2020", "count": 7756}, {"year": "2021", "count": 6118}, {"year": "2022", "count": 6945}, {"year": "2023", "count": 6593}, {"year": "2024", "count": 4196}, {"year": "2025", "count": 4425}], "nytData": [{"year": "2016", "count": 1089}, {"year": "2017", "count": 997}, {"year": "2018", "count": 645}, {"year": "2019", "count": 610}, {"year": "2020", "count": 461}, {"year": "2021", "count": 412}, {"year": "2022", "count": 399}, {"year": "2023", "count": 362}, {"year": "2024", "count": 209}, {"year": "2025", "count": 60}], "topMedia": [{"name": "nytimes.com", "count": 5244}, {"name": "theguardian.com", "count": 4341}, {"name": "latimes.com", "count": 4339}, {"name": "washingtonpost.com", "count": 3536}, {"name": "reuters.com", "count": 3160}, {"name": "usatoday.com", "count": 3070}, {"name": "cnn.com", "count": 2059}, {"name": "nbcnews.com", "count": 2048}, {"name": "usnews.com", "count": 1856}, {"name": "buzzfeed.com", "count": 1795}, {"name": "startribune.com", "count": 1648}, {"name": "seattletimes.com", "count": 1624}, {"name": "sfgate.com", "count": 1557}, {"name": "azcentral.com", "count": 1484}, {"name": "foxnews.com", "count": 1439}, {"name": "chicagotribune.com", "count": 1380}, {"name": "abcnews.go.com", "count": 1257}, {"name": "huffpost.com", "count": 1206}, {"name": "slate.com", "count": 1202}, {"name": "variety.com", "count": 1110}], "totalArticles": 98036};
+
+  var tip=document.getElementById('tip');
+  function showT(ev,html){tip.innerHTML=html;tip.classList.add('vis');moveT(ev);}
+  function moveT(ev){var lx=ev.clientX+14,ly=ev.clientY-46;if(lx+260>window.innerWidth)lx=ev.clientX-268;if(ly<8)ly=8;tip.style.left=lx+'px';tip.style.top=ly+'px';}
+  function hideT(){tip.classList.remove('vis');}
+
+  function mkSvg(id,W,H){
+    var el=document.getElementById(id);
+    if(!el)return null;
+    el.setAttribute('viewBox','0 0 '+W+' '+H);
+    el.innerHTML='';
+    return el;
+  }
+  function mk(tag,attrs,par){
+    var e=document.createElementNS(ns,tag);
+    Object.entries(attrs).forEach(function(kv){e.setAttribute(kv[0],String(kv[1]));  });
+    if(par)par.appendChild(e);return e;
+  }
+  function txt(t,attrs,par){
+    var e=document.createElementNS(ns,'text');
+    Object.entries(attrs).forEach(function(kv){e.setAttribute(kv[0],String(kv[1]));  });
+    e.textContent=t;if(par)par.appendChild(e);return e;
+  }
+
+  // ── YEAR BAR CHART ──
+  function drawYearBar(){
+    var el=document.getElementById('les-year-svg');
+    if(!el)return;
+    var W=el.getBoundingClientRect().width;
+    if(W<10)return;
+    var H=200,P={l:54,r:14,t:14,b:28};
+    var iW=W-P.l-P.r,iH=H-P.t-P.b;
+    var svg=mkSvg('les-year-svg',W,H);if(!svg)return;
+    var maxV=Math.max.apply(null,LES.yearData.map(function(d){return d.count;}));
+    var xBand=iW/LES.yearData.length;
+    var y=d3.scaleLinear().domain([0,maxV*1.08]).range([iH,0]);
+    var bw=Math.max(4,xBand*0.6);
+    [5000,10000,15000,20000].forEach(function(v){
+      if(v>maxV*1.05)return;
+      mk('line',{x1:P.l,x2:P.l+iW,y1:P.t+y(v),y2:P.t+y(v),stroke:'rgba(0,0,0,.06)','stroke-width':1},svg);
+      txt((v/1000)+'k',{x:P.l-5,y:P.t+y(v),'text-anchor':'end','dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#bbb'},svg);
+    });
+    LES.yearData.forEach(function(d,i){
+      var bx=P.l+i*xBand+(xBand-bw)/2;
+      var bh=iH-y(d.count);
+      var by=P.t+y(d.count);
+      var rect=mk('rect',{x:bx,y:by,width:bw,height:bh,fill:COL,opacity:0.75,rx:2},svg);
+      txt(d.year,{x:bx+bw/2,y:P.t+iH+14,'text-anchor':'middle','font-family':'DM Mono,monospace','font-size':9.5,fill:'#bbb'},svg);
+      (function(dd){
+        rect.addEventListener('mouseenter',function(ev){showT(ev,'<strong>'+dd.year+'</strong>'+dd.count.toLocaleString()+' articles');});
+        rect.addEventListener('mousemove',moveT);rect.addEventListener('mouseleave',hideT);
+        rect.addEventListener('mouseenter',function(){rect.setAttribute('opacity','0.95');});
+        rect.addEventListener('mouseleave',function(){rect.setAttribute('opacity','0.75');});
+      })(d);
+    });
+  }
+
+  // ── NYT LINE CHART ──
+  function drawNYTLine(){
+    var el=document.getElementById('les-nyt-svg');
+    if(!el)return;
+    var W=el.getBoundingClientRect().width;
+    if(W<10)return;
+    var H=200,P={l:54,r:14,t:14,b:28};
+    var iW=W-P.l-P.r,iH=H-P.t-P.b;
+    var svg=mkSvg('les-nyt-svg',W,H);if(!svg)return;
+    var maxV=Math.max.apply(null,LES.nytData.map(function(d){return d.count;}));
+    var n=LES.nytData.length;
+    var x=d3.scaleLinear().domain([0,n-1]).range([0,iW]);
+    var y=d3.scaleLinear().domain([0,maxV*1.1]).range([iH,0]);
+    [250,500,750,1000].forEach(function(v){
+      if(v>maxV*1.05)return;
+      mk('line',{x1:P.l,x2:P.l+iW,y1:P.t+y(v),y2:P.t+y(v),stroke:'rgba(0,0,0,.06)','stroke-width':1},svg);
+      txt(v,{x:P.l-5,y:P.t+y(v),'text-anchor':'end','dominant-baseline':'middle','font-family':'DM Mono,monospace','font-size':9,fill:'#bbb'},svg);
+    });
+    var lineD=LES.nytData.map(function(d,i){return [P.l+x(i),P.t+y(d.count)];});
+    var pathD='M'+lineD.map(function(p){return p[0]+','+p[1];}).join('L');
+    mk('path',{d:pathD,fill:'none',stroke:COL,'stroke-width':2.2,opacity:0.9},svg);
+    mk('path',{d:pathD+'L'+(P.l+iW)+','+(P.t+iH)+'L'+P.l+','+(P.t+iH)+'Z',fill:COL,opacity:0.1},svg);
+    LES.nytData.forEach(function(d,i){
+      var cx=P.l+x(i),cy=P.t+y(d.count);
+      var dot=mk('circle',{cx:cx,cy:cy,r:4,fill:COL,stroke:'#f5f2eb','stroke-width':1.5,cursor:'pointer'},svg);
+      txt(d.year,{x:cx,y:P.t+iH+14,'text-anchor':'middle','font-family':'DM Mono,monospace','font-size':9.5,fill:'#bbb'},svg);
+      (function(dd){
+        dot.addEventListener('mouseenter',function(ev){showT(ev,'<strong>NYT '+dd.year+'</strong>'+dd.count+' articles');dot.setAttribute('r',6);});
+        dot.addEventListener('mousemove',moveT);dot.addEventListener('mouseleave',function(){hideT();dot.setAttribute('r',4);});
+      })(d);
+    });
+  }
+
+  // ── MEDIA BAR CHART ──
+  function drawMediaBars(){
+    var wrap=document.getElementById('les-media-chart');
+    if(!wrap)return;
+    wrap.innerHTML='';
+    var maxV=LES.topMedia[0].count;
+    LES.topMedia.forEach(function(d){
+      var row=document.createElement('div');
+      row.className='bi-bar-row';
+      var nameEl=document.createElement('div');
+      nameEl.className='bi-bar-name';
+      nameEl.textContent=d.name;
+      var track=document.createElement('div');
+      track.className='bi-bar-track';
+      var fill=document.createElement('div');
+      fill.className='bi-bar-fill';
+      fill.style.width=(d.count/maxV*100)+'%';
+      fill.style.background=COL;
+      track.appendChild(fill);
+      var val=document.createElement('div');
+      val.className='bi-bar-val';
+      val.textContent=d.count.toLocaleString();
+      row.appendChild(nameEl);row.appendChild(track);row.appendChild(val);
+      (function(dd){
+        row.addEventListener('mouseenter',function(ev){showT(ev,'<strong>'+dd.name+'</strong>'+dd.count.toLocaleString()+' lesbian articles');});
+        row.addEventListener('mousemove',moveT);row.addEventListener('mouseleave',hideT);
+      })(d);
+      wrap.appendChild(row);
+    });
+  }
+
+  // ── INIT via ResizeObserver on each SVG ──
+  function watch(id,fn){
+    var el=document.getElementById(id);
+    if(!el)return;
+    new ResizeObserver(function(){
+      if(el.getBoundingClientRect().width>10)fn();
+    }).observe(el);
+  }
+
+  watch('les-year-svg', drawYearBar);
+  watch('les-nyt-svg', drawNYTLine);
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', drawMediaBars);
+  }else{
+    drawMediaBars();
+  }
+  window.addEventListener('resize',function(){drawYearBar();drawNYTLine();});
+})();
+</script>
+
+
+<script>
+(function(){
+  var ns='http://www.w3.org/2000/svg';
+  var DATA={"Gay": [{"term": "lgbtq", "ratio": 0.0604, "theme": "Identity & Community"}, {"term": "pride", "ratio": 0.0502, "theme": "Identity & Community"}, {"term": "rights", "ratio": 0.0454, "theme": "Rights & Politics"}, {"term": "sex", "ratio": 0.0404, "theme": "Health & Body"}, {"term": "anti", "ratio": 0.0388, "theme": "Rights & Politics"}, {"term": "new", "ratio": 0.0386, "theme": "People & Society"}, {"term": "trump", "ratio": 0.037, "theme": "Legislative Attack"}, {"term": "people", "ratio": 0.0372, "theme": "People & Society"}, {"term": "marriage", "ratio": 0.037, "theme": "Culture & Media"}, {"term": "man", "ratio": 0.032, "theme": "People & Society"}, {"term": "court", "ratio": 0.0316, "theme": "Rights & Politics"}, {"term": "lgbt", "ratio": 0.031, "theme": "Identity & Community"}, {"term": "florida", "ratio": 0.0268, "theme": "Legislative Attack"}, {"term": "buttigieg", "ratio": 0.025, "theme": "Legislative Attack"}, {"term": "bill", "ratio": 0.0236, "theme": "Rights & Politics"}, {"term": "history", "ratio": 0.0236, "theme": "Identity & Community"}, {"term": "supreme", "ratio": 0.0226, "theme": "Rights & Politics"}, {"term": "coming", "ratio": 0.0224, "theme": "Identity & Community"}, {"term": "community", "ratio": 0.022, "theme": "Identity & Community"}, {"term": "star", "ratio": 0.0212, "theme": "Culture & Media"}, {"term": "tweets", "ratio": 0.0202, "theme": "Legislative Attack"}, {"term": "straight", "ratio": 0.019, "theme": "People & Society"}, {"term": "dies", "ratio": 0.019, "theme": "Other"}, {"term": "disney", "ratio": 0.0176, "theme": "Culture & Media"}, {"term": "lgbtq+", "ratio": 0.0184, "theme": "Identity & Community"}, {"term": "week", "ratio": 0.0182, "theme": "Other"}, {"term": "white", "ratio": 0.0178, "theme": "Other"}, {"term": "pete", "ratio": 0.0174, "theme": "Other"}, {"term": "queer", "ratio": 0.0162, "theme": "Identity & Community"}, {"term": "america", "ratio": 0.016, "theme": "Other"}], "Lesbian": [{"term": "lgbtq", "ratio": 0.0808, "theme": "Identity & Community"}, {"term": "lgbt", "ratio": 0.0736, "theme": "Identity & Community"}, {"term": "sex", "ratio": 0.0598, "theme": "Health & Body"}, {"term": "new", "ratio": 0.053, "theme": "People & Society"}, {"term": "rights", "ratio": 0.047, "theme": "Rights & Politics"}, {"term": "court", "ratio": 0.0446, "theme": "Rights & Politics"}, {"term": "women", "ratio": 0.0436, "theme": "People & Society"}, {"term": "queer", "ratio": 0.0444, "theme": "Identity & Community"}, {"term": "pride", "ratio": 0.0374, "theme": "Identity & Community"}, {"term": "lesbians", "ratio": 0.0368, "theme": "People & Society"}, {"term": "people", "ratio": 0.033, "theme": "People & Society"}, {"term": "couple", "ratio": 0.0262, "theme": "Culture & Media"}, {"term": "marriage", "ratio": 0.0248, "theme": "Culture & Media"}, {"term": "law", "ratio": 0.0206, "theme": "Rights & Politics"}, {"term": "black", "ratio": 0.0194, "theme": "People & Society"}, {"term": "trump", "ratio": 0.0194, "theme": "Legislative Attack"}, {"term": "lgbtq+", "ratio": 0.0192, "theme": "Identity & Community"}, {"term": "film", "ratio": 0.018, "theme": "Culture & Media"}, {"term": "supreme", "ratio": 0.018, "theme": "Rights & Politics"}, {"term": "discrimination", "ratio": 0.0176, "theme": "People & Society"}, {"term": "love", "ratio": 0.0174, "theme": "Culture & Media"}, {"term": "study", "ratio": 0.0174, "theme": "Health & Body"}, {"term": "school", "ratio": 0.0172, "theme": "People & Society"}, {"term": "batwoman", "ratio": 0.0168, "theme": "Culture & Media"}, {"term": "community", "ratio": 0.0168, "theme": "Identity & Community"}, {"term": "woman", "ratio": 0.0168, "theme": "People & Society"}, {"term": "tv", "ratio": 0.0162, "theme": "Culture & Media"}, {"term": "u.s.", "ratio": 0.0162, "theme": "People & Society"}, {"term": "ruling", "ratio": 0.0152, "theme": "Rights & Politics"}, {"term": "history", "ratio": 0.015, "theme": "Identity & Community"}], "Bisexual": [{"term": "lgbtq", "ratio": 0.0732, "theme": "Identity & Community"}, {"term": "lgbt", "ratio": 0.0584, "theme": "Identity & Community"}, {"term": "new", "ratio": 0.0552, "theme": "People & Society"}, {"term": "people", "ratio": 0.0428, "theme": "People & Society"}, {"term": "blood", "ratio": 0.0434, "theme": "Health & Body"}, {"term": "pride", "ratio": 0.0434, "theme": "Identity & Community"}, {"term": "sex", "ratio": 0.0354, "theme": "Health & Body"}, {"term": "star", "ratio": 0.0318, "theme": "Culture & Media"}, {"term": "queer", "ratio": 0.0314, "theme": "Identity & Community"}, {"term": "women", "ratio": 0.0274, "theme": "People & Society"}, {"term": "hiv", "ratio": 0.0272, "theme": "Health & Body"}, {"term": "coming", "ratio": 0.0258, "theme": "Identity & Community"}, {"term": "study", "ratio": 0.0254, "theme": "Health & Body"}, {"term": "tv", "ratio": 0.0246, "theme": "Culture & Media"}, {"term": "sexuality", "ratio": 0.0242, "theme": "Identity & Community"}, {"term": "health", "ratio": 0.0228, "theme": "Health & Body"}, {"term": "bi", "ratio": 0.0216, "theme": "Identity & Community"}, {"term": "rights", "ratio": 0.0204, "theme": "Rights & Politics"}, {"term": "lgbtq+", "ratio": 0.0192, "theme": "Identity & Community"}, {"term": "monkeypox", "ratio": 0.019, "theme": "Health & Body"}, {"term": "fda", "ratio": 0.019, "theme": "Health & Body"}, {"term": "pansexual", "ratio": 0.0188, "theme": "Identity & Community"}, {"term": "sexual", "ratio": 0.0184, "theme": "Health & Body"}, {"term": "love", "ratio": 0.0174, "theme": "Culture & Media"}, {"term": "reveals", "ratio": 0.0182, "theme": "Culture & Media"}, {"term": "woman", "ratio": 0.0178, "theme": "People & Society"}, {"term": "finds", "ratio": 0.0178, "theme": "Other"}, {"term": "community", "ratio": 0.0178, "theme": "Identity & Community"}, {"term": "characters", "ratio": 0.0178, "theme": "Other"}, {"term": "report", "ratio": 0.0178, "theme": "Other"}], "Trans": [{"term": "trump", "ratio": 0.174, "theme": "Legislative Attack"}, {"term": "ban", "ratio": 0.153, "theme": "Legislative Attack"}, {"term": "military", "ratio": 0.107, "theme": "Legislative Attack"}, {"term": "people", "ratio": 0.101, "theme": "People & Society"}, {"term": "court", "ratio": 0.0766, "theme": "Rights & Politics"}, {"term": "sports", "ratio": 0.0718, "theme": "Legislative Attack"}, {"term": "women", "ratio": 0.057, "theme": "People & Society"}, {"term": "athletes", "ratio": 0.0598, "theme": "Legislative Attack"}, {"term": "gender", "ratio": 0.0528, "theme": "Legislative Attack"}, {"term": "rights", "ratio": 0.0516, "theme": "Rights & Politics"}, {"term": "supreme", "ratio": 0.052, "theme": "Rights & Politics"}, {"term": "new", "ratio": 0.0504, "theme": "People & Society"}, {"term": "care", "ratio": 0.0494, "theme": "Other"}, {"term": "troops", "ratio": 0.0484, "theme": "Legislative Attack"}, {"term": "biden", "ratio": 0.0476, "theme": "Legislative Attack"}, {"term": "policy", "ratio": 0.0426, "theme": "Rights & Politics"}, {"term": "bill", "ratio": 0.0418, "theme": "Rights & Politics"}, {"term": "u.s.", "ratio": 0.0368, "theme": "People & Society"}, {"term": "health", "ratio": 0.0354, "theme": "Health & Body"}, {"term": "judge", "ratio": 0.0348, "theme": "Rights & Politics"}, {"term": "girls", "ratio": 0.0292, "theme": "Legislative Attack"}, {"term": "woman", "ratio": 0.0332, "theme": "People & Society"}, {"term": "bathroom", "ratio": 0.0328, "theme": "Legislative Attack"}, {"term": "pentagon", "ratio": 0.0332, "theme": "Legislative Attack"}, {"term": "law", "ratio": 0.0308, "theme": "Rights & Politics"}, {"term": "students", "ratio": 0.0296, "theme": "Other"}, {"term": "governor", "ratio": 0.0288, "theme": "Other"}, {"term": "school", "ratio": 0.0288, "theme": "People & Society"}, {"term": "youth", "ratio": 0.028, "theme": "Other"}, {"term": "administration", "ratio": 0.0276, "theme": "Other"}]};
+  var COLORS={"Rights & Politics": "#6B9EC9", "Identity & Community": "#A87EE0", "Culture & Media": "#F0954E", "Health & Body": "#5EC47A", "Legislative Attack": "#E05C5C", "People & Society": "#C9A86B", "Other": "#cccccc"};
+  var IDS=['Gay','Lesbian','Bisexual','Trans'];
+  var THEME_ORDER=['Legislative Attack','Rights & Politics','Health & Body','Culture & Media','Identity & Community','People & Society','Other'];
+
+  var tip=document.getElementById('tip');
+  function showT(ev,html){tip.innerHTML=html;tip.classList.add('vis');moveT(ev);}
+  function moveT(ev){var lx=ev.clientX+14,ly=ev.clientY-46;if(lx+260>window.innerWidth)lx=ev.clientX-268;if(ly<8)ly=8;tip.style.left=lx+'px';tip.style.top=ly+'px';}
+  function hideT(){tip.classList.remove('vis');}
+
+  var idColors={Gay:'#5BBCE0',Lesbian:'#F0954E',Bisexual:'#A87EE0',Trans:'#5EC47A'};
+
+  // Build legend
+  var legEl=document.getElementById('stacked-legend');
+  if(legEl){
+    THEME_ORDER.forEach(function(th){
+      if(!COLORS[th])return;
+      var row=document.createElement('div');
+      row.style.cssText='display:flex;align-items:center;gap:.5rem;cursor:pointer';
+      var swatch=document.createElement('div');
+      swatch.style.cssText='width:12px;height:12px;border-radius:2px;flex-shrink:0;background:'+COLORS[th];
+      var lbl=document.createElement('span');
+      lbl.style.cssText="font-family:'DM Mono',monospace;font-size:.68rem;color:#555;letter-spacing:.06em";
+      lbl.textContent=th;
+      row.appendChild(swatch);row.appendChild(lbl);legEl.appendChild(row);
+    });
+  }
+
+  function draw(){
+    var el=document.getElementById('stacked-svg');
+    if(!el)return;
+    var W=el.getBoundingClientRect().width;
+    if(W<10)return;
+
+    // Calculate max total ratio across all identities for shared Y axis
+    var maxTotal=0;
+    IDS.forEach(function(id){
+      var sum=DATA[id].reduce(function(a,b){return a+b.ratio;},0);
+      if(sum>maxTotal)maxTotal=sum;
+    });
+    maxTotal=Math.ceil(maxTotal*10)/10; // round up to .1
+
+    var H=Math.round(W*0.85); // taller chart
+    el.setAttribute('viewBox','0 0 '+W+' '+H);
+    el.setAttribute('height',H);
+    el.innerHTML='';
+
+    var P={l:42,r:16,t:16,b:60};
+    var iW=W-P.l-P.r, iH=H-P.t-P.b;
+    var colW=iW/IDS.length;
+    var barW=colW*0.62;
+    var y=d3.scaleLinear().domain([0,maxTotal]).range([iH,0]);
+
+    // Y gridlines + labels
+    var ticks=[0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6].filter(function(v){return v<=maxTotal+.05;});
+    ticks.forEach(function(v){
+      var yv=P.t+y(v);
+      var line=document.createElementNS(ns,'line');
+      line.setAttribute('x1',P.l);line.setAttribute('x2',P.l+iW);
+      line.setAttribute('y1',yv);line.setAttribute('y2',yv);
+      line.setAttribute('stroke','rgba(0,0,0,.06)');line.setAttribute('stroke-width','1');
+      el.appendChild(line);
+      var t=document.createElementNS(ns,'text');
+      t.setAttribute('x',P.l-5);t.setAttribute('y',yv);
+      t.setAttribute('text-anchor','end');t.setAttribute('dominant-baseline','middle');
+      t.setAttribute('font-family','DM Mono,monospace');t.setAttribute('font-size','9');
+      t.setAttribute('fill','#bbb');t.textContent=Math.round(v*100)+'%';
+      el.appendChild(t);
+    });
+
+    // Baseline
+    var base=document.createElementNS(ns,'line');
+    base.setAttribute('x1',P.l);base.setAttribute('x2',P.l+iW);
+    base.setAttribute('y1',P.t+iH);base.setAttribute('y2',P.t+iH);
+    base.setAttribute('stroke','rgba(0,0,0,.15)');base.setAttribute('stroke-width','1');
+    el.appendChild(base);
+
+    // Draw each identity column
+    IDS.forEach(function(id,i){
+      var cx=P.l+i*colW+colW/2;
+      var bx=cx-barW/2;
+      var words=DATA[id];
+
+      // Sort by theme order then by ratio within theme
+      var sorted=words.slice().sort(function(a,b){
+        var ta=THEME_ORDER.indexOf(a.theme), tb=THEME_ORDER.indexOf(b.theme);
+        if(ta!==tb)return ta-tb;
+        return b.ratio-a.ratio;
+      });
+
+      var stackY=P.t+iH; // start from bottom
+      sorted.forEach(function(w){
+        var segH=iH*w.ratio/maxTotal;
+        if(segH<0.5)return;
+        stackY-=segH;
+        var col=COLORS[w.theme]||'#ccc';
+
+        var rect=document.createElementNS(ns,'rect');
+        rect.setAttribute('x',bx);rect.setAttribute('y',stackY);
+        rect.setAttribute('width',barW);rect.setAttribute('height',segH-0.8);
+        rect.setAttribute('fill',col);rect.setAttribute('opacity','0.82');
+        rect.setAttribute('rx','1');rect.style.cursor='pointer';
+        rect.setAttribute('stroke','rgba(245,242,235,.6)');
+        rect.setAttribute('stroke-width','0.5');
+
+        (function(ww,cc){
+          rect.addEventListener('mouseenter',function(ev){
+            rect.setAttribute('opacity','1');
+            showT(ev,'<strong>'+ww.term+'</strong>'+(ww.ratio*100).toFixed(1)+'% of '+id+' articles<br><span style="color:'+cc+';font-size:.8em">'+ww.theme+'</span>');
+          });
+          rect.addEventListener('mousemove',moveT);
+          rect.addEventListener('mouseleave',function(){hideT();rect.setAttribute('opacity','0.82');});
+        })(w,col);
+
+        el.appendChild(rect);
+      });
+
+      // Identity label below
+      var lbl=document.createElementNS(ns,'text');
+      lbl.setAttribute('x',cx);lbl.setAttribute('y',P.t+iH+18);
+      lbl.setAttribute('text-anchor','middle');lbl.setAttribute('font-family','DM Mono,monospace');
+      lbl.setAttribute('font-size','12');lbl.setAttribute('font-weight','600');
+      lbl.setAttribute('letter-spacing','0.1em');lbl.setAttribute('fill',idColors[id]);
+      lbl.textContent=id.toUpperCase();
+      el.appendChild(lbl);
+
+      // Total label above bar
+      var total=words.reduce(function(a,b){return a+b.ratio;},0);
+      var topY=P.t+y(total);
+      var tot=document.createElementNS(ns,'text');
+      tot.setAttribute('x',cx);tot.setAttribute('y',topY-5);
+      tot.setAttribute('text-anchor','middle');tot.setAttribute('font-family','DM Mono,monospace');
+      tot.setAttribute('font-size','9');tot.setAttribute('fill','#aaa');
+      tot.textContent=Math.round(total*100)+'%';
+      el.appendChild(tot);
+    });
+  }
+
+  var svgEl=document.getElementById('stacked-svg');
+  if(svgEl){
+    new ResizeObserver(function(){
+      if(svgEl.getBoundingClientRect().width>10)draw();
+    }).observe(svgEl);
+    window.addEventListener('resize',draw);
+  }
+})();
+</script>
+
+
+<!-- ════════════════════════════════════════
+     REFERENCES
+════════════════════════════════════════ -->
+<section style="border-top:1px solid var(--border);background:var(--paper2)">
+<div style="max-width:var(--w);margin:0 auto;padding:5vh 5vw">
+
+  <div style="margin-bottom:2.5rem">
+    <div class="sec-num">References</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.6rem">Sources &amp; credibility notes</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);max-width:680px;line-height:1.75">All sources accessed March–April 2026. Sources marked <span style="display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.12rem .4rem;background:rgba(91,188,224,.12);color:var(--gay);border-radius:2px">PRIMARY</span> are government data or original survey data. Sources marked <span style="display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.12rem .4rem;background:rgba(94,196,122,.12);color:#3a8a52;border-radius:2px">INSTITUTIONAL</span> are major advocacy or professional organizations. Sources marked <span style="display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.12rem .4rem;background:rgba(240,149,78,.12);color:var(--lesbian);border-radius:2px">NOTE</span> carry credibility caveats.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 4rem">
+
+    <!-- LEFT COLUMN: refs 1-16 -->
+    <div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[1]</span>
+        GLAAD. "GLAAD Responds to 2024 FBI Hate Crime Statistics." <a href="https://glaad.org/releases/glaad-responds-to-2024-fbi-hate-crime-statistics/" target="_blank">glaad.org</a>
+        <div class="ref-note">GLAAD is the leading LGBTQ+ media advocacy organization. Press releases synthesize primary FBI data with institutional analysis. Credible for contextual framing.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[2]</span>
+        The Trevor Project. "New Study Shows LGBTQ+ Youth Mental Health Crisis is Worsening." <a href="https://www.thetrevorproject.org/blog/new-study-shows-lgbtq-youth-mental-health-crisis-is-worsening-in-the-u-s/" target="_blank">thetrevorproject.org</a>
+        <div class="ref-note">Trevor Project conducts the largest annual survey of LGBTQ+ youth mental health in the U.S. Methodology is peer-reviewed. High credibility for mental health data.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[3]</span>
+        Movement Advancement Project. "Policy &amp; Issue Analysis." <a href="https://www.lgbtmap.org/policy-and-issue-analysis" target="_blank">lgbtmap.org</a>
+        <div class="ref-note">MAP is a nonpartisan LGBTQ+ policy research organization. Their legislative tracking is widely cited in academic literature.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[4]</span>
+        Movement Advancement Project. "New Report: Bisexual People Face Invisibility, Isolation, and Shocking Rates of Discrimination." <a href="https://www.lgbtmap.org/news/invisible-majority-release" target="_blank">lgbtmap.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[5]</span>
+        Movement Advancement Project. "New Report Details High Rates of Violence, Discrimination toward Bisexual People." <a href="https://www.lgbtmap.org/news/understanding-issues-facing-bisexual-americans-release" target="_blank">lgbtmap.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[6]</span>
+        Gallup. "What Percentage of Americans Are LGBTQ+?" <a href="https://news.gallup.com/poll/332522/percentage-americans-lgbt.aspx" target="_blank">news.gallup.com</a>
+        <div class="ref-note">Gallup's annual survey is the most widely cited source for U.S. LGBT+ population estimates. Large nationally representative sample. High credibility.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[7]</span>
+        Movement Advancement Project. "Invisible Majority: The Disparities Facing Bisexual People." <a href="https://www.lgbtmap.org/policy-and-issue-analysis/invisible-majority" target="_blank">lgbtmap.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[8]</span>
+        GLAAD. "Where We Are On TV Report 2016–2017." <a href="https://glaad.org/whereweareontv16/" target="_blank">glaad.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[9]</span>
+        Movement Advancement Project. "New Infographic Details the Challenges of Being Bisexual in America." <a href="https://www.lgbtmap.org/news/bisexual-graphic-release" target="_blank">lgbtmap.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[10]</span>
+        Gallup. "LGBTQ+ Rights: Historical Trends." <a href="https://news.gallup.com/poll/1651/gay-lesbian-rights.aspx" target="_blank">news.gallup.com</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[11]</span>
+        GLAAD. "Where We Are On TV Report 2015–2016." <a href="https://glaad.org/whereweareontv15/" target="_blank">glaad.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[12]</span>
+        ACLU. "Mapping Attacks on LGBTQ Rights in U.S. State Legislatures in 2026." <a href="https://www.aclu.org/legislative-attacks-on-lgbtq-rights-2026" target="_blank">aclu.org</a>
+        <div class="ref-note">The ACLU Legislative Tracker is the most comprehensive public database of anti-LGBTQ+ legislation. Annual totals are used in peer-reviewed research.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(240,149,78,.12);color:var(--lesbian)">NOTE</span>
+        <span class="ref-num">[13]</span>
+        Strickland, B. "State Legislature Demographics and Anti-Transgender Legislation." Utah State University Honors Thesis. <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=2056&context=honors" target="_blank">digitalcommons.usu.edu</a>
+        <div class="ref-note">⚠ This is an undergraduate honors thesis, not peer-reviewed research. Useful for descriptive analysis of legislative correlates but should not be cited as primary empirical evidence. Recommend supplementing with peer-reviewed sources on the same topic.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[14]</span>
+        ACLU. "The Impacts of Anti-Transgender Laws and Policies." Research Brief. <a href="https://assets.aclu.org/live/uploads/2024/08/Impact-AntiTrans-Law-Research-Brief-FINAL.pdf" target="_blank">aclu.org (PDF)</a>
+        <div class="ref-note">Advocacy research brief synthesizing peer-reviewed literature. Credible as a secondary synthesis; primary citations within the brief should be checked for direct use.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(240,149,78,.12);color:var(--lesbian)">NOTE</span>
+        <span class="ref-num">[15]</span>
+        Memorial Healthcare System. "New Blood Donation Guidelines Promote Inclusiveness." <a href="https://www.mhs.net/blog/2024/01/new-blood-donation-guidelines" target="_blank">mhs.net</a>
+        <div class="ref-note">⚠ Hospital system blog post. Useful for contextual background on FDA policy change, but should be supplemented by the FDA's own announcement or peer-reviewed policy analysis.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[16]</span>
+        Penn Leonard Davis Institute. "FDA: Base Blood Donation Policy on Science, not Stigma." <a href="https://ldi.upenn.edu/our-work/research-updates/fda-base-blood-donation-policy-on-science-not-stigma/" target="_blank">ldi.upenn.edu</a>
+        <div class="ref-note">University of Pennsylvania health policy research institute. Credible academic commentary on FDA policy.</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: refs 17-31 -->
+    <div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[17]</span>
+        AABB (American Association of Blood Banks). "Blood Donation by Gay and Bisexual Men." <a href="https://www.aabb.org/for-donors-patients/about-blood-donation/blood-donation-by-gay-and-bisexual-men" target="_blank">aabb.org</a>
+        <div class="ref-note">AABB is the professional standards body for blood banking. Authoritative source on donation policy.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[18]</span>
+        The Trevor Project. "2024 National Survey on LGBTQ+ Youth Mental Health." <a href="https://www.thetrevorproject.org/survey-2024/" target="_blank">thetrevorproject.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[19]</span>
+        The Trevor Project. "2023 U.S. National Survey on the Mental Health of LGBTQ+ Young People." <a href="https://www.thetrevorproject.org/survey-2023/" target="_blank">thetrevorproject.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[20]</span>
+        The Trevor Project. "2022 National Survey on LGBTQ Youth Mental Health." <a href="https://www.thetrevorproject.org/survey-2022/" target="_blank">thetrevorproject.org</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(240,149,78,.12);color:var(--lesbian)">NOTE</span>
+        <span class="ref-num">[21]</span>
+        Children's Safety Network. "LGBTQ+ Youth Data from YRBS and Beyond." Webinar slides. <a href="https://www.childrenssafetynetwork.org/sites/default/files/LGBTQDataWebinarSlides.pdf" target="_blank">childrenssafetynetwork.org (PDF)</a>
+        <div class="ref-note">⚠ Webinar slide deck, not a formal publication. Useful for background context but should not be cited as primary data. The underlying YRBS data can be accessed directly from CDC.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[22]</span>
+        FBI Uniform Crime Reports. "Hate Crime Statistics 2016: Incidents and Offenses." <a href="https://ucr.fbi.gov/hate-crime/2016/topic-pages/incidentsandoffenses" target="_blank">ucr.fbi.gov</a>
+        <div class="ref-note">FBI UCR is the authoritative primary source for U.S. hate crime data. High credibility.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[23]</span>
+        FBI Uniform Crime Reports. "Hate Crime Statistics 2017: Incidents and Offenses." <a href="https://ucr.fbi.gov/hate-crime/2017/topic-pages/incidents-and-offenses" target="_blank">ucr.fbi.gov</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[24]</span>
+        FBI Uniform Crime Reports. "Hate Crime Statistics 2017: Victims." <a href="https://ucr.fbi.gov/hate-crime/2017/topic-pages/victims.pdf" target="_blank">ucr.fbi.gov (PDF)</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[25]</span>
+        FBI Uniform Crime Reports. "Hate Crime Statistics 2018: Incidents and Offenses." <a href="https://ucr.fbi.gov/hate-crime/2018/topic-pages/incidents-and-offenses" target="_blank">ucr.fbi.gov</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[26]</span>
+        U.S. Department of Justice. "Hate Crimes: Facts and Statistics." <a href="https://www.justice.gov/hatecrimes/hate-crime-statistics" target="_blank">justice.gov</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(240,149,78,.12);color:var(--lesbian)">NOTE</span>
+        <span class="ref-num">[27]</span>
+        USAFacts. "Are hate crimes on the rise?" <a href="https://usafacts.org/articles/which-groups-have-experienced-an-increase-in-hate-crimes/" target="_blank">usafacts.org</a>
+        <div class="ref-note">⚠ USAFacts is a data journalism and aggregation site. Useful for visualizations and summaries, but the underlying data should be cited from primary FBI/DOJ sources directly.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[28]</span>
+        U.S. Department of Justice. "2022 FBI Hate Crimes Statistics." <a href="https://www.justice.gov/archives/crs/highlights/2022-hate-crime-statistics" target="_blank">justice.gov</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(91,188,224,.12);color:var(--gay)">PRIMARY</span>
+        <span class="ref-num">[29]</span>
+        Gallup. "LGBTQ+ Identification Holds at 9% in U.S." <a href="https://news.gallup.com/poll/702206/lgbtq-identification-holds.aspx" target="_blank">news.gallup.com</a>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[30]</span>
+        GLAAD. "Where We Are on TV 2024–2025: Summary of Broadcast Findings." <a href="https://glaad.org/whereweareontv24/summary-of-broadcast-findings/" target="_blank">glaad.org</a>
+        <div class="ref-note">Source for the 62% broadcast decline figure (141 → 53 characters). This is the specific broadcast TV subset, distinct from the all-platform total of 489 characters used in the chart.</div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-tag" style="background:rgba(94,196,122,.12);color:#3a8a52">INSTITUTIONAL</span>
+        <span class="ref-num">[31]</span>
+        ACLU. "Mapping Attacks on LGBTQ Rights in U.S. State Legislatures in 2025." <a href="https://www.aclu.org/legislative-attacks-on-lgbtq-rights-2025" target="_blank">aclu.org</a>
+      </div>
+
+      <!-- Theoretical foundations not in numbered list -->
+      <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+        <div class="chart-label" style="margin-bottom:1rem">Theoretical frameworks cited in text</div>
+        <div class="ref-item">
+          McCombs, M. &amp; Shaw, D. (1972). "The Agenda-Setting Function of Mass Media." <em>Public Opinion Quarterly</em>, 36(2), 176–187.
+        </div>
+        <div class="ref-item">
+          Entman, R. (1993). "Framing: Toward Clarification of a Fractured Paradigm." <em>Journal of Communication</em>, 43(4), 51–58.
+        </div>
+        <div class="ref-item">
+          Meyer, I. H. (2003). "Prejudice, Social Stress, and Mental Health in Lesbian, Gay, and Bisexual Populations." <em>Psychological Bulletin</em>, 129(5), 674–697.
+        </div>
+        <div class="ref-item">
+          Schiappa, E., Gregg, P. B., &amp; Hewes, D. E. (2005). "The Parasocial Contact Hypothesis." <em>Communication Monographs</em>, 72(1), 92–115.
+        </div>
+        <div class="ref-item">
+          Ng, Yang et al. (2024). "Differential Media Representation of LGBT+ Identities." <em>PLOS ONE</em>, e0300385. <span style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted)">[Thematic labelling methodology]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</section>
 
 </body>
 </html>
