@@ -163,6 +163,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .ref-item a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:2px}
 .ref-item a:hover{text-decoration-color:var(--ink)}
 
+
+/* ── HERO INTRO (right column) ── */
+.hero-intro{display:flex;flex-direction:column;justify-content:center;gap:1.1rem}
+.hero-intro p{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.85;color:#555}
+.hero-intro em{font-style:italic}
+
+/* ── HERO STATS BAR (full-width bottom strip) ── */
+.hero-stats-bar{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  align-items:center;
+  border-top:1px solid var(--border);
+  padding:2.5vh 5vw;
+  max-width:100%;
+}
+.hero-stat-h{text-align:center;padding:0 2vw}
+.hero-stat-divider{width:1px;height:3.5rem;background:var(--border)}
+
 </style>
 </head>
 <body>
@@ -180,32 +198,45 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
      HERO
 ════════════════════════════════════════ -->
 <section style="border-bottom:1px solid var(--border)">
-<div id="hero">
-  <div>
-    <div class="eyebrow">Visual Essay · ITP @ NYU Tisch · 2016–2025</div>
-    <h1 class="hero-title">Say<br><em>My</em><br>Names</h1>
-    <div class="hero-divider"></div>
-    <p class="hero-sub">Differential visibility and narrative framing of LGBT+ identities in a decade of U.S. online news</p>
+
+  <!-- Title + Introduction -->
+  <div id="hero">
+    <div>
+      <div class="eyebrow">Visual Essay · ITP @ NYU Tisch · 2016–2025</div>
+      <h1 class="hero-title">Say<br><em>My</em><br>Names</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">Differential visibility and narrative framing of LGBT+ identities in a decade of U.S. online news</p>
+    </div>
+    <div class="hero-intro">
+      <p>Although scholarly interest in LGBT+ media representation has grown, most published work relies on qualitative content analysis, single-identity coverage patterns, or focuses on non-U.S. contexts. Large-scale, quantitative investigation of how American online news distributes attention across the four distinct LGBT+ identity subgroups — and what that asymmetry produces — remains sparse.</p>
+      <p>This gap matters because media visibility is not a neutral measure. Drawing on Agenda-Setting Theory (McCombs &amp; Shaw, 1972), Framing Theory (Entman, 1993), and the Minority Stress Model (Meyer, 2003), this project treats differential coverage as a mechanism: one that shapes public cognition, informs legislative agendas, and is associated with documented disparities in mental health and physical safety among the communities least served by that coverage.</p>
+      <p>What follows is an analysis of 954,433 English-language online news articles retrieved from Media Cloud, spanning January 2016 through December 2025 — four identity labels, tracked week by week, across a decade of American political life.</p>
+    </div>
   </div>
-  <div class="stats-grid">
-    <div class="stat-item" style="border-color:var(--gay)">
+
+  <!-- Key statistics: full-width below -->
+  <div class="hero-stats-bar">
+    <div class="hero-stat-h">
       <div class="stat-n" style="color:var(--gay)">954,433</div>
-      <div class="stat-l">articles analyzed · Jan 2016 – Dec 2025</div>
+      <div class="stat-l">articles analyzed<br>Jan 2016 – Dec 2025</div>
     </div>
-    <div class="stat-item" style="border-color:var(--bi)">
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-h">
       <div class="stat-n" style="color:var(--bi)">56%</div>
-      <div class="stat-l">of LGBT+ adults are bisexual<br>yet receive only 6% of media coverage</div>
+      <div class="stat-l">of LGBT+ adults are bisexual<br>yet receive only 6% of coverage</div>
     </div>
-    <div class="stat-item" style="border-color:var(--lesbian)">
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-h">
       <div class="stat-n" style="color:var(--lesbian)">8.6×</div>
       <div class="stat-l">more gay coverage than bisexual<br>despite bisexual being the larger group</div>
     </div>
-    <div class="stat-item" style="border-color:var(--trans)">
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-h">
       <div class="stat-n" style="color:var(--trans)">0.11×</div>
       <div class="stat-l">bisexual coverage-to-population ratio<br>the most underrepresented identity</div>
     </div>
   </div>
-</div>
+
 </section>
 
 <!-- ════════════════════════════════════════
@@ -234,7 +265,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       </div>
       <div class="abs-block">
         <div class="abs-label">Conclusions</div>
-        <div class="abs-body">These findings provide empirical evidence of structural bisexual erasure and crisis-contingent transgender visibility in U.S. online news media. Editorial framing reflects and reinforces distinct social positions: gay identity as normative LGBT+ default; lesbian as culturally legible but politically marginal; bisexual as demographically invisible; and transgender as predominantly defined through political opposition.</div>
+        <div class="abs-body">These findings provide empirical evidence of structural bisexual erasure and crisis-contingent transgender visibility in U.S. online news media. Editorial framing reflects and reinforces distinct social positions: gay identity as normative LGBT+ default; lesbian as culturally legible but politically marginal; bisexual as demographically invisible; and transgender as predominantly defined through political opposition. Cross-referencing with The Trevor Project national mental health surveys (2022–2024) and FBI Uniform Crime Reports (2016–2024) indicates that the identities least visible in news coverage face disproportionately high rates of suicidal ideation, and that bisexual hate crime victimization is recorded at roughly one-tenth the rate of anti-gay crimes despite bisexual people constituting a larger share of the population — patterns consistent with the hypothesis that structural media invisibility carries measurable downstream consequences for community safety and mental health.</div>
       </div>
       <div class="abs-keywords"><strong style="color:var(--ink)">Keywords:</strong> LGBT+ media representation · bisexual erasure · transgender visibility · corpus linguistics · framing analysis · Media Cloud · political cycle effects</div>
     </div>
