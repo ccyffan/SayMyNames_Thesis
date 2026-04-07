@@ -27,7 +27,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 /* ── LAYOUT ── */
 .page{max-width:var(--w);margin:0 auto;padding:0 5vw}
 .full{border-top:1px solid var(--border)}
-.sec{padding:7vh 0 6vh}
+.sec{padding:5vh 0 8vh}
 .sec-inner{max-width:var(--w);margin:0 auto;padding:0 5vw}
 
 /* ── TYPE SCALE ── */
@@ -181,6 +181,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .hero-stat-h{text-align:center;padding:0 2vw}
 .hero-stat-divider{width:1px;height:3.5rem;background:var(--border)}
 
+
+.full .sec-num{margin-top:0}
+.full > div{padding-top:5vh}
 </style>
 </head>
 <body>
@@ -482,16 +485,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
         <p>Among cisgender LGBT+ identities, bisexual youth report the highest rates of suicidal ideation and depression — higher than gay youth, despite receiving far less media coverage and community recognition.</p>
         <p>Transgender youth face the most severe outcomes overall, corresponding with their exposure to crisis-driven, adversarial media framing and sustained legislative attacks.</p>
       </div>
-      <div class="metric-tabs" style="margin-top:1rem" id="trevor-tabs">
+    </div>
+    <div class="chart-vis">
+      <div id="trevor-wrap"></div>
+      <div class="metric-tabs" style="margin-top:.8rem" id="trevor-tabs">
         <div class="metric-tab active" data-metric="si">Suicide ideation</div>
         <div class="metric-tab" data-metric="sa">Suicide attempt</div>
         <div class="metric-tab" data-metric="dep">Depression</div>
         <div class="metric-tab" data-metric="anx">Anxiety</div>
       </div>
-      <div class="chart-note">Source: The Trevor Project National Survey on LGBTQ Youth Mental Health, 2023–2024. Past 12 months. Percentages reflect youth who reported each indicator.</div>
-    </div>
-    <div class="chart-vis">
-      <div id="trevor-wrap"></div>
+      <div class="chart-note" style="margin-top:.8rem">Source: The Trevor Project National Survey on LGBTQ Youth Mental Health, 2023–2024. Past 12 months. Percentages reflect youth who reported each indicator.</div>
     </div>
   </div>
 
