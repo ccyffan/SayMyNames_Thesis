@@ -16,6 +16,7 @@
   --ink:#1a1a2e; --paper:#f5f2eb; --paper2:#ede8df;
   --muted:#8a8070; --border:rgba(26,26,46,.1);
   --w:1200px;
+  --nav-offset:0;
 }
 
 /* ── BASE ── */
@@ -30,7 +31,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .page{max-width:var(--w);margin:0 auto;padding:0 5vw}
 .full{border-top:1px solid var(--border)}
 .sec{padding:5vh 0 8vh}
-.sec-inner{max-width:var(--w);margin:0 auto;padding:0 5vw}
+.sec-inner{max-width:calc(var(--w) + var(--nav-offset));margin:0 auto;padding:0 5vw;padding-left:calc(5vw + var(--nav-offset));box-sizing:border-box}
 
 /* ── TYPE SCALE ── */
 .eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
@@ -54,7 +55,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .stat-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;line-height:1.5}
 
 /* ── ABSTRACT ── */
-#abstract{border-top:2px solid var(--ink);padding:6vh 5vw}
+#abstract{border-top:2px solid var(--ink);padding:6vh 5vw;padding-left:calc(5vw + var(--nav-offset));box-sizing:border-box}
 #abstract .inner{max-width:var(--w);margin:0 auto}
 .abs-title{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:.5rem}
 .abs-authors{font-size:.68rem;letter-spacing:.08em;color:var(--muted);margin-bottom:2rem}
@@ -83,7 +84,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .vol-legend{display:flex;gap:1.8rem;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
 
 /* ── COLLOC GRID ── */
-.colloc-wrap{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-top:1px solid var(--border)}
+.colloc-wrap{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-top:1px solid var(--border);max-width:calc(var(--w) + var(--nav-offset));margin:0 auto;padding:0 5vw;padding-left:calc(5vw + var(--nav-offset));box-sizing:border-box}
 .colloc-col{border-right:1px solid var(--border)}
 .colloc-col:last-child{border-right:none}
 .colloc-hdr{padding:.75rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-bottom:2px solid}
@@ -151,7 +152,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .a2-frame{margin-top:.45rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.14rem .42rem;background:rgba(155,127,212,.1);color:var(--muted);display:inline-block}
 
 /* ── METHODS (end) ── */
-#methods{border-top:1px solid var(--border);background:var(--paper2);padding:4vh 5vw}
+#methods{border-top:1px solid var(--border);background:var(--paper2);padding:4vh 5vw;padding-left:calc(5vw + var(--nav-offset));box-sizing:border-box}
 #methods .inner{max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:4rem}
 #methods h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--ink)}
 #methods p{font-family:'Cormorant Garamond',serif;font-size:.95rem;line-height:1.82;color:#555}
@@ -402,6 +403,157 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   .land-meta{flex-direction:column;gap:.8rem}
 }
 
+/* ════════════════════════════════════════
+   READING PROGRESS BAR + SIDE NAVIGATION
+   - Top 2px progress bar tracks scroll depth
+   - Left side nav appears after quiz section
+   - Mobile: hides side nav, shows floating btn
+══════════════════════════════════════════ */
+
+#progress-bar{
+  position:fixed; top:0; left:0;
+  height:2px; width:0;
+  background:linear-gradient(90deg, var(--gay) 0%, var(--trans) 33%, var(--lesbian) 66%, var(--bi) 100%);
+  z-index:99;
+  transition:width .12s linear;
+  pointer-events:none;
+}
+
+/* Activate nav-offset only when main-essay is visible AND on desktop.
+   This shifts all .sec-inner / .colloc-wrap / #abstract / #methods rightward
+   to make room for the side nav, in unison. The 'essay-active' class is
+   added by JS once the user enters the main essay. */
+@media (min-width:1024px){
+  body.essay-active{
+    --nav-offset:16rem;
+  }
+}
+
+#side-nav{
+  position:fixed;
+  left:1.6rem;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:100;
+  font-family:'DM Mono',monospace;
+  font-size:.66rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .55s ease;
+  max-width:210px;
+}
+#side-nav.visible{
+  opacity:.3;
+  pointer-events:auto;
+}
+#side-nav:hover{ opacity:1 }
+
+#side-nav .nav-item{
+  display:block;
+  padding:.55rem 0 .55rem 1rem;
+  color:var(--ink);
+  text-decoration:none;
+  border-left:1px solid rgba(26,26,46,.18);
+  line-height:1.35;
+  transition:border-left-color .25s ease, padding-left .25s ease, font-weight .15s ease;
+  white-space:nowrap;
+}
+#side-nav .nav-item:hover{
+  border-left-color:var(--ink);
+  padding-left:1.25rem;
+}
+#side-nav .nav-item.active{
+  border-left:4px solid var(--ink);
+  padding-left:.85rem;
+  font-weight:600;
+}
+/* Identity-colored active borders */
+#side-nav .nav-item.active[data-identity="bi"]{ border-left-color:var(--bi) }
+#side-nav .nav-item.active[data-identity="lesbian"]{ border-left-color:var(--lesbian) }
+#side-nav .nav-item.active[data-identity="trans"]{ border-left-color:var(--trans) }
+#side-nav .nav-item.active[data-identity="gay"]{ border-left-color:var(--gay) }
+
+/* Mobile floating button + overlay */
+#mobile-toc-btn{
+  position:fixed;
+  bottom:1.4rem; right:1.4rem;
+  width:46px; height:46px;
+  border-radius:50%;
+  background:var(--ink);
+  color:var(--paper);
+  border:none;
+  box-shadow:0 3px 14px rgba(0,0,0,.18);
+  cursor:pointer;
+  z-index:101;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-size:1.1rem;
+  font-family:'DM Mono',monospace;
+  opacity:0;
+  transition:opacity .4s ease, transform .15s ease;
+}
+#mobile-toc-btn.visible{ opacity:1 }
+#mobile-toc-btn:active{ transform:scale(.94) }
+
+#mobile-toc-overlay{
+  position:fixed; inset:0;
+  background:var(--paper);
+  z-index:200;
+  display:none;
+  flex-direction:column;
+  padding:5rem 2rem 3rem;
+  font-family:'DM Mono',monospace;
+  overflow-y:auto;
+}
+#mobile-toc-overlay.open{ display:flex }
+#mobile-toc-overlay .toc-eyebrow{
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:1.5rem;
+}
+#mobile-toc-overlay .nav-item{
+  display:block;
+  padding:1.1rem 0;
+  font-size:1.15rem;
+  font-family:'Playfair Display',serif;
+  font-weight:600;
+  color:var(--ink);
+  border-bottom:1px solid rgba(26,26,46,.1);
+  text-decoration:none;
+}
+#mobile-toc-overlay .nav-item.active{
+  color:var(--ink);
+  font-style:italic;
+}
+#mobile-toc-overlay .nav-item.active[data-identity="bi"]{ color:var(--bi) }
+#mobile-toc-overlay .nav-item.active[data-identity="lesbian"]{ color:var(--lesbian) }
+#mobile-toc-close{
+  position:absolute;
+  top:1.4rem; right:1.4rem;
+  background:none;
+  border:none;
+  font-size:1.5rem;
+  cursor:pointer;
+  color:var(--ink);
+  font-family:'DM Mono',monospace;
+}
+
+/* Responsive: hide side nav on narrow screens */
+@media (max-width: 1023px){
+  #side-nav{ display:none }
+  #mobile-toc-btn{ display:flex }
+}
+
+/* Hide nav controls when printing */
+@media print{
+  #progress-bar,#side-nav,#mobile-toc-btn,#mobile-toc-overlay{ display:none !important }
+}
+
 </style>
 </head>
 <body>
@@ -628,13 +780,13 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 <!-- ════════════════════════════════════════
      PART 1 — WHO GETS HOW MUCH?
 ════════════════════════════════════════ -->
-<section class="full">
+<section class="full" id="sec-coverage">
 <div class="sec-inner sec">
 
   <!-- 1A: Coverage Volume -->
   <div class="chart-row" style="margin-bottom:6vh">
     <div class="chart-text">
-      <div class="sec-num">01 — Coverage volume</div>
+      <div class="sec-num">01 — The hierarchy</div>
       <h2 class="sec-h">The gap between who exists and who gets covered.</h2>
       <div class="body-text">
         <p>Each row shows two things: media coverage share (solid bar) and actual LGBT+ population share (faded bar below it). In a world where coverage matched demographics, both bars would be the same length.</p>
@@ -658,7 +810,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <div class="chart-note">Ratio = (media share) ÷ (population share). 1.0 = parity. Sources: Media Cloud 2016–2025 · Gallup 2025.</div>
     </div>
     <div class="chart-text">
-      <div class="sec-num">02 — Representation ratio</div>
+      <div class="sec-num" style="font-size:clamp(1.1rem,1.8vw,1.4rem)">Representation ratio</div>
       <h2 class="sec-h">One number that says it all.</h2>
       <div class="body-text">
         <p>Divide each identity's media share by its population share. A ratio of 1.0 means perfect parity. Gay coverage runs at 3.07×. Bisexual coverage runs at 0.11× — nearly invisible relative to its demographic size.</p>
@@ -671,7 +823,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   <div style="border-top:1px solid var(--border);padding-top:5vh;margin-top:5vh">
     <div class="chart-row">
       <div class="chart-text">
-        <div class="sec-num">+ Population context</div>
+        <div class="sec-num" style="font-size:clamp(1.1rem,1.8vw,1.4rem)">Population context</div>
         <h2 class="sec-h" style="font-size:clamp(1.3rem,2.2vw,1.8rem)">The community is growing. Coverage is not keeping up.</h2>
         <div class="body-text">
           <p>The share of U.S. adults identifying as LGBT+ doubled between 2012 and 2025, driven primarily by bisexual identification among younger generations. Bisexual adults grew from 1.8% to 5.3% of the total U.S. adult population.</p>
@@ -692,10 +844,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 <!-- ════════════════════════════════════════
      PART 2 — WHEN DOES COVERAGE HAPPEN?
 ════════════════════════════════════════ -->
-<section class="full">
+<section class="full" id="sec-spikes">
 <div class="sec-inner sec">
   <div style="margin-bottom:3rem">
-    <div class="sec-num">03 — Weekly coverage trends, 2016–2025</div>
+    <div class="sec-num">02 — Weekly coverage trends, 2016–2025</div>
     <h2 class="sec-h">Every spike is a story. Every flat line is a silence.</h2>
     <div class="body-text" style="max-width:680px">
       <p>Four charts, one shared Y-axis. All four identities measured on the same scale. Gay coverage is so dominant that the other three identities barely register at this scale. Trans coverage spikes sharply around legislative attacks, then recedes. Lesbian and bisexual coverage is near-flat throughout.</p>
@@ -744,10 +896,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 <!-- ════════════════════════════════════════
      PART 3 — WHAT DOES COVERAGE SAY?
 ════════════════════════════════════════ -->
-<section class="full">
+<section class="full" id="sec-words">
 <div class="sec-inner sec">
   <div style="margin-bottom:3rem">
-    <div class="sec-num">04 — Word analysis</div>
+    <div class="sec-num">03 — Word analysis</div>
     <h2 class="sec-h">The words that keep each identity company.</h2>
     <div class="body-text" style="max-width:680px">
       <p>From 5,000 sampled articles per identity, these are the terms that appeared most consistently alongside each identity label. The percentage shows how many of those articles contained each word. Read across all four columns and you see not four coverage patterns but four distinct kinds of stories.</p>
@@ -812,17 +964,121 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     </tbody>
   </table>
 </div>
+
+<!-- ────────────────────────────────────────
+     SUB-SECTION: GAY AS UMBRELLA TERM
+     A critical extension of the word analysis —
+     argues that "gay" functioning as a stand-in
+     for the whole community is itself an erasure
+     mechanism, not just a methodological footnote.
+──────────────────────────────────────── -->
+<div class="sec-inner" style="padding-top:5vh;padding-bottom:8vh;border-top:1px solid var(--border);margin-top:2vh">
+  <div style="max-width:760px">
+    <div class="sec-num" style="font-size:clamp(1.2rem,2vw,1.6rem)">A note — when "gay" stands in for everyone.</div>
+    <div class="body-text" style="margin-top:1.6rem">
+      <p>One of the most consequential things news media does is decide which word travels. When American newsrooms write about "gay rights," "gay marriage," or "the gay community," they often mean LGBT+ rights, LGBT+ marriage, LGBT+ community — the term is functioning as an umbrella, not a specific identity marker.</p>
+      <p style="margin-top:1.4rem">This is not a neutral linguistic shorthand. It is a mechanism. When "gay" becomes the default term through which the entire community is referenced, the specific lives and political needs of bisexual, lesbian, and transgender people get folded into a single representative figure — and that figure is, in editorial practice, white, male, middle-class, and respectable. Bisexual women's particular vulnerabilities to intimate partner violence, transgender women's distinct healthcare access barriers, lesbian-specific economic disparities — all of these disappear under a category named after one demographic and applied to four.</p>
+      <p style="margin-top:1.4rem">The collocate analysis above treats "gay" as a specific keyword, following the methodology of Ng et al. (2024). The data validates this treatment: the words that most consistently surround "gay" in this corpus — <em>marriage, pride, buttigieg, court, rights</em> — are specific rather than umbrella-general. If "gay" were predominantly functioning as an umbrella term in U.S. news, its collocates would skew toward coalition-language (<em>community, coalition, LGBTQ+ rights</em>). They do not.</p>
+      <p style="margin-top:1.4rem">But the broader linguistic point holds beyond the methodology. Calling something the "gay rights movement" instead of the "LGBT+ rights movement" is itself a small, repeated editorial decision. Repeated across a million articles, those small decisions shape who gets recognized as having a stake in the conversation, and who gets quietly absorbed into someone else's. <em>Erasure begins in word choice.</em></p>
+    </div>
+  </div>
+</div>
+
 </section>
 
 <!-- ════════════════════════════════════════
      PART 4 — WHAT ARE THE CONSEQUENCES?
 ════════════════════════════════════════ -->
-<section class="full">
+<section class="full" id="sec-consequences">
 <div class="sec-inner sec">
-  <div class="sec-num">05 — Consequences of differential visibility</div>
+  <div class="sec-num">04 — Consequences of differential visibility</div>
   <h2 class="sec-h">The community most invisible in the news is the most vulnerable in reality.</h2>
   <div class="body-text" style="max-width:700px;margin-bottom:4vh">
     <p>Media visibility is not a neutral measure. The Minority Stress Model (Meyer, 2003) posits that chronic social exclusion and stigma — including invisibility in public discourse — produce measurable health disparities. The data below show that the identities least served by media coverage face the most severe mental health outcomes, and that crisis-driven media framing of transgender identity corresponds with a documented rise in anti-trans hate crimes.</p>
+  </div>
+
+  <!-- ────────────────────────────────────────
+       FEEDBACK LOOP DIAGRAM
+       Frames consequences as a closed mechanism
+       (media → cognition → policy → conditions →
+       new coverage), not a linear list of effects.
+       Designed to anchor the entire Section 05.
+  ──────────────────────────────────────── -->
+  <div style="margin:2vh 0 6vh;padding:5vh 5vw;background:var(--paper2);border-radius:2px">
+    <div style="max-width:760px;margin-bottom:3vh">
+      <div class="chart-label" style="margin-bottom:1rem">A closed mechanism, not a list of effects</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:1.2rem">What follows is one loop, viewed at four points.</h3>
+      <div class="body-text">
+        <p>The consequences of differential visibility are not a list of unrelated outcomes. They are a single self-reinforcing mechanism. Disproportional coverage shapes what readers come to recognize as real and salient. Recognition shapes which problems legislators take up, which they ignore, and which they criminalize. Legislation reshapes the daily conditions of the communities targeted, ignored, or mischaracterized. Those reshaped conditions become new editorial material — crises to cover, controversies to cite — and the loop closes back on itself.</p>
+        <p style="margin-top:1.2rem">The Trevor Project numbers below, and the FBI hate crime data after them, are measurements taken at the bottom of this loop.</p>
+      </div>
+    </div>
+
+    <svg viewBox="0 0 1000 540" style="display:block;width:100%;max-width:900px;margin:2vh auto 0;height:auto;font-family:'DM Mono',monospace" xmlns="http://www.w3.org/2000/svg">
+      <!-- Arrow marker definition -->
+      <defs>
+        <marker id="loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1a2e"/>
+        </marker>
+      </defs>
+
+      <!-- Node 01: MEDIA COVERAGE (top-left) -->
+      <g>
+        <rect x="60" y="40" width="340" height="160" fill="#f5f2eb" stroke="#1a1a2e" stroke-width="1.5" rx="2"/>
+        <text x="80" y="74" font-size="11" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e" opacity="0.5">01 · MEDIA COVERAGE</text>
+        <text x="80" y="118" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">Selective allocation</text>
+        <text x="80" y="148" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">of editorial attention.</text>
+        <text x="80" y="180" font-family="Cormorant Garamond, serif" font-size="15" font-style="italic" fill="#555">51% to gay · 6% to bisexual · trans crisis-only</text>
+      </g>
+
+      <!-- Arrow 1 → 2 (right, top) -->
+      <line x1="400" y1="120" x2="600" y2="120" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#loop-arrow)"/>
+      <text x="500" y="106" text-anchor="middle" font-size="10" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e">SHAPES</text>
+
+      <!-- Node 02: PUBLIC COGNITION (top-right) -->
+      <g>
+        <rect x="600" y="40" width="340" height="160" fill="#f5f2eb" stroke="#1a1a2e" stroke-width="1.5" rx="2"/>
+        <text x="620" y="74" font-size="11" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e" opacity="0.5">02 · PUBLIC COGNITION</text>
+        <text x="620" y="118" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">Who exists. Who</text>
+        <text x="620" y="148" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">deserves notice.</text>
+        <text x="620" y="180" font-family="Cormorant Garamond, serif" font-size="15" font-style="italic" fill="#555">readers overestimate bi coverage 4×</text>
+      </g>
+
+      <!-- Arrow 2 → 3 (down, right) -->
+      <line x1="770" y1="200" x2="770" y2="340" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#loop-arrow)"/>
+      <text x="800" y="275" text-anchor="start" font-size="10" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e">INFORMS</text>
+
+      <!-- Node 03: POLICY AGENDA (bottom-right) -->
+      <g>
+        <rect x="600" y="340" width="340" height="160" fill="#f5f2eb" stroke="#1a1a2e" stroke-width="1.5" rx="2"/>
+        <text x="620" y="374" font-size="11" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e" opacity="0.5">03 · POLICY AGENDA</text>
+        <text x="620" y="418" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">Which problems get</text>
+        <text x="620" y="448" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">legislated. Which don't.</text>
+        <text x="620" y="480" font-family="Cormorant Garamond, serif" font-size="15" font-style="italic" fill="#555">~50 anti-LGBT+ bills (2016) → 616 (2025)</text>
+      </g>
+
+      <!-- Arrow 3 → 4 (left, bottom) -->
+      <line x1="600" y1="420" x2="400" y2="420" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#loop-arrow)"/>
+      <text x="500" y="406" text-anchor="middle" font-size="10" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e">PRODUCES</text>
+
+      <!-- Node 04: REAL CONDITIONS (bottom-left) -->
+      <g>
+        <rect x="60" y="340" width="340" height="160" fill="#f5f2eb" stroke="#1a1a2e" stroke-width="1.5" rx="2"/>
+        <text x="80" y="374" font-size="11" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e" opacity="0.5">04 · REAL CONDITIONS</text>
+        <text x="80" y="418" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">Health, safety,</text>
+        <text x="80" y="448" font-family="Playfair Display, serif" font-size="22" font-weight="700" fill="#1a1a2e">visibility, survival.</text>
+        <text x="80" y="480" font-family="Cormorant Garamond, serif" font-size="15" font-style="italic" fill="#555">Trevor: bi 45% / trans 49% suicidal ideation</text>
+      </g>
+
+      <!-- Arrow 4 → 1 (up, left) — closes the loop -->
+      <line x1="230" y1="340" x2="230" y2="200" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#loop-arrow)"/>
+      <text x="200" y="275" text-anchor="end" font-size="10" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e">TRIGGERS</text>
+      <text x="200" y="290" text-anchor="end" font-size="10" font-weight="600" letter-spacing="0.18em" fill="#1a1a2e">NEW COVERAGE</text>
+    </svg>
+
+    <div style="max-width:760px;margin:3vh auto 0;text-align:center">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:#666;line-height:1.7">The loop runs in both directions. A community can become more visible because it is being attacked, and that visibility — read as relevance — can in turn license further attack.</p>
+    </div>
   </div>
 
   <!-- 4A: Trevor Project -->
@@ -905,9 +1161,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 <!-- ════════════════════════════════════════
      PART 5 — BISEXUAL: FULL CASE STUDY
 ════════════════════════════════════════ -->
-<section class="full" style="border-top:2px solid var(--bi)">
+<section class="full" id="sec-bi" style="border-top:2px solid var(--bi)">
 <div class="sec-inner sec">
-  <div class="sec-num">06 — Bisexual: a closer look</div>
+  <div class="sec-num">05 — Bisexual: a closer look</div>
   <h2 class="sec-h" style="color:var(--bi)">56,978 articles. A decade of decline.</h2>
   <div class="chart-row" style="margin-bottom:3vh">
     <div class="chart-text">
@@ -970,7 +1226,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 ════════════════════════════════════════ -->
 <section class="full" id="sec-les" style="border-top:2px solid var(--lesbian)">
 <div class="sec-inner sec">
-  <div class="sec-num">07 — Lesbian: a closer look</div>
+  <div class="sec-num">06 — Lesbian: a closer look</div>
   <h2 class="sec-h" style="color:var(--lesbian)">98,036 articles. A slower, quieter decline.</h2>
 
   <div class="chart-row" style="margin-bottom:3vh">
@@ -2073,7 +2329,7 @@ function hideTip(){tip.classList.remove('vis');}
 <!-- ════════════════════════════════════════
      REFERENCES
 ════════════════════════════════════════ -->
-<section style="border-top:1px solid var(--border);background:var(--paper2)">
+<section id="references" style="border-top:1px solid var(--border);background:var(--paper2)">
 <div style="max-width:var(--w);margin:0 auto;padding:5vh 5vw">
 
   <div style="margin-bottom:2.5rem">
@@ -2616,6 +2872,166 @@ function enterEssay(){
     requestAnimationFrame(()=>{main.classList.add('visible');window.scrollTo({top:0,behavior:'smooth'})});
   },500);
 }
+</script>
+
+<!-- ════════════════════════════════════════
+     PROGRESS BAR + SIDE NAVIGATION
+══════════════════════════════════════════ -->
+<script>
+(function(){
+  // Section structure for the navigation
+  const navItems = [
+    { id: 'sec-coverage',     label: '01 · The hierarchy' },
+    { id: 'sec-spikes',       label: '02 · Weekly trends' },
+    { id: 'sec-words',        label: '03 · Word analysis' },
+    { id: 'sec-consequences', label: '04 · Consequences', identity: 'trans' },
+    { id: 'sec-bi',           label: '05 · Bisexual closer look', identity: 'bi' },
+    { id: 'sec-les',          label: '06 · Lesbian closer look',  identity: 'lesbian' },
+    { id: 'methods',          label: 'Methods' },
+    { id: 'references',       label: 'References' },
+  ];
+
+  // ─── Build side nav (desktop) ───
+  const sideNav = document.createElement('nav');
+  sideNav.id = 'side-nav';
+  sideNav.setAttribute('aria-label', 'Section navigation');
+  navItems.forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'nav-item';
+    a.href = '#' + item.id;
+    a.textContent = item.label;
+    a.dataset.target = item.id;
+    if (item.identity) a.dataset.identity = item.identity;
+    sideNav.appendChild(a);
+  });
+  document.body.appendChild(sideNav);
+
+  // ─── Build progress bar ───
+  const pb = document.createElement('div');
+  pb.id = 'progress-bar';
+  document.body.appendChild(pb);
+
+  // ─── Build mobile button + overlay ───
+  const mobBtn = document.createElement('button');
+  mobBtn.id = 'mobile-toc-btn';
+  mobBtn.innerHTML = '☰';
+  mobBtn.setAttribute('aria-label', 'Open section navigation');
+  document.body.appendChild(mobBtn);
+
+  const mobOv = document.createElement('div');
+  mobOv.id = 'mobile-toc-overlay';
+  mobOv.innerHTML = '<div class="toc-eyebrow">Sections</div>';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.id = 'mobile-toc-close';
+  closeBtn.innerHTML = '✕';
+  closeBtn.setAttribute('aria-label', 'Close navigation');
+  mobOv.appendChild(closeBtn);
+
+  navItems.forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'nav-item';
+    a.href = '#' + item.id;
+    a.textContent = item.label;
+    a.dataset.target = item.id;
+    if (item.identity) a.dataset.identity = item.identity;
+    mobOv.appendChild(a);
+  });
+  document.body.appendChild(mobOv);
+
+  mobBtn.addEventListener('click', () => mobOv.classList.add('open'));
+  closeBtn.addEventListener('click', () => mobOv.classList.remove('open'));
+  mobOv.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', () => mobOv.classList.remove('open'));
+  });
+
+  // ─── Show nav once user has entered the main essay ───
+  // Triggers when #main-essay has the .visible class AND user has scrolled past hero.
+  const mainEssay = document.getElementById('main-essay');
+
+  function isEssayActive(){
+    return mainEssay && mainEssay.classList.contains('visible');
+  }
+
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+    pb.style.width = (progress * 100) + '%';
+
+    // Show side nav only after main-essay is active AND user has scrolled
+    // a bit past its top (so hero gets full attention first)
+    if (isEssayActive()){
+      const triggerTop = mainEssay.offsetTop + 200;  // 200px into the essay
+      if (scrollTop >= triggerTop){
+        sideNav.classList.add('visible');
+        mobBtn.classList.add('visible');
+        document.body.classList.add('essay-active');
+      } else {
+        sideNav.classList.remove('visible');
+        mobBtn.classList.remove('visible');
+        document.body.classList.remove('essay-active');
+      }
+    } else {
+      sideNav.classList.remove('visible');
+      mobBtn.classList.remove('visible');
+      document.body.classList.remove('essay-active');
+    }
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+  updateProgress();
+
+  // Re-check periodically since main-essay visibility happens via class change
+  // (no native event fires when classList changes). MutationObserver is the
+  // clean way to detect it.
+  if (mainEssay){
+    const mo = new MutationObserver(() => updateProgress());
+    mo.observe(mainEssay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  // ─── Active section highlighting via IntersectionObserver ───
+  const allNavLinks = document.querySelectorAll('#side-nav .nav-item, #mobile-toc-overlay .nav-item');
+  const sectionEls = navItems
+    .map(i => document.getElementById(i.id))
+    .filter(Boolean);
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        const id = entry.target.id;
+        allNavLinks.forEach(a => {
+          if (a.dataset.target === id){
+            a.classList.add('active');
+          } else {
+            a.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+  sectionEls.forEach(el => obs.observe(el));
+
+  // ─── Smooth scroll on click ───
+  allNavLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(a.dataset.target);
+      if (target){
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Update URL hash without jumping
+        history.replaceState(null, '', '#' + a.dataset.target);
+      }
+    });
+  });
+
+  // ─── Keyboard: ESC closes mobile overlay ───
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobOv.classList.contains('open')){
+      mobOv.classList.remove('open');
+    }
+  });
+})();
 </script>
 
 </body>
