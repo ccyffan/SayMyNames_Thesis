@@ -20,7 +20,8 @@
 }
 
 /* ── BASE ── */
-html,body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;overflow-x:hidden;line-height:1.6}
+html,body{background:var(--paper);color:var(--ink);font-family:'DM Mono',monospace;line-height:1.6}
+html{overflow-x:clip}
 
 /* ── GRAIN ── */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
@@ -571,6 +572,46 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   #progress-bar,#side-nav,#mobile-toc-btn,#mobile-toc-overlay{ display:none !important }
 }
 
+/* ── SPIKE SCROLLYTELLING ── */
+#spike-scrolly-wrap{position:relative}
+#scrolly-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;position:relative}
+#scrolly-graphic{position:relative}
+#scrolly-graphic-inner{position:sticky;top:6vh;height:88vh;display:flex;flex-direction:column;background:transparent;overflow:hidden;will-change:transform}
+#scrolly-keywords{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.scrolly-kw-set{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
+.scrolly-kw-set.is-current{opacity:1}
+.scrolly-kw{position:absolute;font-family:'Playfair Display',serif;font-style:italic;color:rgba(26,26,46,.07);font-weight:700;white-space:nowrap;letter-spacing:-.02em;line-height:1}
+#scrolly-chart-wrap{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;z-index:2}
+#scrolly-chart-meta{margin-bottom:1.2rem;min-height:90px}
+.scrolly-meta-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;font-weight:600}
+.scrolly-meta-title{font-family:'Playfair Display',serif;font-size:clamp(1.15rem,1.6vw,1.5rem);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:.35rem}
+.scrolly-meta-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:#666;line-height:1.45}
+#scrolly-chart{display:block;width:100%;flex:1;min-height:340px}
+#scrolly-steps{display:flex;flex-direction:column;gap:0;padding:25vh 0 25vh}
+.scrolly-step{min-height:72vh;padding:6vh 1.4rem;display:flex;align-items:center;border-left:2px solid transparent;transition:border-color .4s ease,opacity .4s ease;opacity:.32}
+.scrolly-step.is-active{opacity:1;border-left-color:var(--ink)}
+.scrolly-step-inner{max-width:440px}
+.scrolly-step-num{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.scrolly-step-tag{display:inline-block;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:.24rem .58rem;border-radius:2px;margin-bottom:1rem}
+.scrolly-step-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2vw,1.85rem);font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:1rem}
+.scrolly-step-body{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.78;color:#3a3a3a}
+.scrolly-step-body p{margin-bottom:.7em}
+.scrolly-step-body em{font-style:italic;color:#222}
+.scrolly-step-body strong{font-weight:600;color:var(--ink)}
+.scrolly-cue{display:inline-flex;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bi);background:rgba(155,127,212,.1);padding:.32rem .7rem;border-radius:2px;margin-top:.8rem}
+.scrolly-cue::before{content:'↓';font-size:.85rem;animation:scrollyBob 2s ease-in-out infinite}
+@keyframes scrollyBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+
+@media (max-width: 900px){
+  #scrolly-grid{grid-template-columns:1fr;gap:0}
+  #scrolly-graphic-inner{top:8vh;height:62vh;margin-bottom:1rem}
+  #scrolly-chart{min-height:200px}
+  .scrolly-step{min-height:55vh;padding:4vh .8rem}
+  #scrolly-steps{padding:8vh 0 15vh}
+  .scrolly-meta-title{font-size:1rem}
+  .scrolly-meta-sub{font-size:.9rem}
+  .scrolly-kw{display:none}
+}
 </style>
 </head>
 <body>
@@ -907,6 +948,41 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <div>
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bi);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:2px solid var(--bi)">Bisexual</div>
       <p class="body-text" style="font-size:.95rem">Bisexual coverage reads as a near-flat line throughout. Small spikes correspond to narrow contexts: the 2014 FDA blood donation debate, Ryan Russell's NFL coming-out (2019), monkeypox vaccine equity (2022), the final FDA blood ban repeal (January 2023). None produced coverage visible alongside the Gay row.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SCROLLYTELLING TIMELINE NARRATIVE
+  ════════════════════════════════════════ -->
+  <div id="spike-scrolly-wrap" style="margin-top:9vh;border-top:1px solid var(--border);padding-top:7vh">
+    <div style="margin-bottom:3rem;max-width:680px">
+      <div class="sec-num" style="font-size:clamp(1.2rem,1.8vw,1.5rem)">02b — Six moments that bent the line</div>
+      <h2 class="sec-h" style="font-size:clamp(1.4rem,2.2vw,1.9rem)">Behind every spike, a decision about who counted.</h2>
+      <p class="body-text">The chart above carries sixty-seven annotated events. These six are the inflection points — the weeks when one news cycle decided which identity got named, and how. Together they trace the structural pattern of the decade: who gets covered, when, and on whose terms.</p>
+      <div class="scrolly-cue">Scroll to walk the decade</div>
+    </div>
+
+    <div id="scrolly-grid">
+      <div id="scrolly-graphic">
+        <div id="scrolly-graphic-inner">
+          <div id="scrolly-keywords"></div>
+          <div id="scrolly-chart-wrap">
+            <div id="scrolly-chart-meta">
+              <div class="scrolly-meta-eyebrow" id="sm-eyebrow">2016 · <span style="color:var(--gay)">Gay</span> · <span style="color:var(--trans)">Trans</span> · <span style="color:var(--lesbian)">Lesbian</span> · <span style="color:var(--bi)">Bisexual</span></div>
+              <div class="scrolly-meta-title" id="sm-title">Pulse Nightclub Shooting</div>
+              <div class="scrolly-meta-sub" id="sm-sub">One event named four communities. One received coverage at the volume of a national emergency.</div>
+            </div>
+            <svg id="scrolly-chart"></svg>
+          </div>
+        </div>
+      </div>
+
+      <div id="scrolly-steps">
+        <!-- Steps populated by JS; static fallback for no-JS users below -->
+        <noscript>
+          <div class="scrolly-step is-active"><div class="scrolly-step-inner"><p class="scrolly-step-body">Enable JavaScript to read the scrollytelling timeline. The data above remains accessible via hover.</p></div></div>
+        </noscript>
+      </div>
     </div>
   </div>
 
@@ -1824,6 +1900,7 @@ function hideTip(){tip.classList.remove('vis');}
     if(!dt){var mk=Object.keys(mo).find(function(m){return d.date.startsWith(m);});if(mk){var ns=d.date.match(/\d+/g)||[];dt=new Date(ns[1]?+ns[1]:+d.year,mo[mk],+ns[0]||1);}}
     return Object.assign({},d,{pd:dt});
   }).filter(function(d){return d.pd;});
+  if(typeof window!=='undefined'){window.__STORY_DATA={WEEKLY:WEEKLY,SPIKES:SPIKES};}
   var xExt=d3.extent(wideData,function(d){return d.week;});
   var gMax=d3.max(KEYS,function(k){return d3.max(wideData,function(d){return d[k];});});
   var admins=[
@@ -3090,6 +3167,384 @@ function skipToReport(ev){
       mobOv.classList.remove('open');
     }
   });
+})();
+</script>
+
+<!-- ════════════════════════════════════════
+     SPIKE SCROLLYTELLING — independent block
+════════════════════════════════════════ -->
+<script>
+(function(){
+  // Wait for data and library to be ready
+  function ready(){
+    if(!window.__STORY_DATA){return setTimeout(ready,80);}
+    if(typeof scrollama==='undefined'){return setTimeout(ready,80);}
+    if(typeof d3==='undefined'){return setTimeout(ready,80);}
+    init();
+  }
+
+  var C={Gay:'#5EC4B8',Lesbian:'#FF7B9C',Bisexual:'#9B7FD4',Trans:'#A8E040'};
+  var KEYS=['Gay','Lesbian','Bisexual','Trans'];
+
+  // ─── Curated narrative arc — 6 inflection points ───
+  var STORY=[
+    {
+      key:'Gay', date:'2016-06-13', year:'2016',
+      identities:['Gay','Trans','Lesbian','Bisexual'],
+      title:'Pulse Nightclub Shooting',
+      subtitle:'One event named four communities. One received coverage at the volume of a national emergency.',
+      framing:'Tragedy',
+      keywords:['Pulse','Orlando','hate crime','49 lives','solidarity','safety'],
+      body:"The week of the Orlando Pulse shooting produced the largest single-week volume in the dataset: <strong>10,265 articles</strong> mentioning <em>gay</em>. The same week registered annual peaks for three other identity terms — lesbian (1,404), bisexual (1,016), and a notable rise for trans (1,660) — but at sharply unequal scale. Gay coverage exceeded lesbian by 7.3x, bisexual by 10.1x, and trans by 6.2x. A single event named all four communities; only one received coverage at the volume associated with national emergencies."
+    },
+    {
+      key:'Trans', date:'2017-02-20', year:'2017',
+      identities:['Trans','Gay','Lesbian','Bisexual'],
+      title:'Trump rescinds trans-student protections',
+      subtitle:'A trans-targeted policy event activated coverage across all four identity terms.',
+      framing:'Policy attack',
+      keywords:['Title IX','students','bathroom','federal','rollback'],
+      body:"Eight months after Pulse, a federal policy reversal produced the second-largest single-identity spike in the dataset. Trans coverage reached <strong>6,406 articles</strong> in the week the Trump administration withdrew Obama-era guidance on transgender students — 12.9x the trans median. The same week registered above-baseline volume for the other three identities (gay 2.7x, lesbian 3.9x, bisexual 4.3x), suggesting that early-period adversarial coverage of one identity activated reporting on the broader LGBT+ category."
+    },
+    {
+      key:'Gay', date:'2020-06-15', year:'2020',
+      identities:['Gay','Trans','Lesbian','Bisexual'],
+      title:'Bostock v. Clayton County',
+      subtitle:'The only week in the decade when all four identities reached annual maximum simultaneously.',
+      framing:'Legal landmark',
+      keywords:['Title VII','Supreme Court','workplace','protection','equality'],
+      body:"<em>Bostock v. Clayton County</em> is one of the few weeks in the dataset where all four identities reached their annual maximum simultaneously: gay <strong>1,670</strong>, trans <strong>1,488</strong>, lesbian <strong>500</strong>, bisexual <strong>261</strong>. The Supreme Court's ruling that Title VII's sex-discrimination protections extend to sexual orientation and gender identity is the only legal moment in the decade that produced this pattern. When a single ruling explicitly named all four communities under one statutory category, news coverage briefly mirrored that legal framing."
+    },
+    {
+      key:'Trans', date:'2023-04-24', year:'2023',
+      identities:['Trans'],
+      title:'State bans cascade into sustained crisis',
+      subtitle:'Ten consecutive weeks above the trans median — coverage tracking the legislative calendar.',
+      framing:'Sustained crisis',
+      keywords:['gender-affirming care','minors','sports bans','Tennessee','Montana'],
+      body:"The 2023 episode differs from earlier trans spikes in duration rather than peak height. Trans coverage stayed above its median for <strong>ten consecutive weeks</strong> (March–May 2023), tracking the legislative calendars of Kansas, Tennessee, and Montana as each passed restrictions on gender-affirming care for minors and trans participation in school athletics. Coverage in this period was no longer triggered by a single event; it followed a state-level legislative cycle. Other identities did not show parallel sustained increases."
+    },
+    {
+      key:'Gay', date:'2023-06-26', year:'2023',
+      identities:['Gay','Lesbian'],
+      title:'303 Creative and the narrowing co-occurrence',
+      subtitle:'Same court, same subject — co-occurrence across two identities, no longer four.',
+      framing:'Legal ruling',
+      keywords:['303 Creative','Elenis','wedding','website','First Amendment'],
+      body:"A second 2023 ruling produced a different pattern. The week of <em>303 Creative v. Elenis</em> — in which the Supreme Court allowed a website designer to refuse services to same-sex weddings — registered above-median volume for gay (<strong>1,299</strong>) and lesbian (<strong>312</strong>) coverage, but trans and bisexual remained at or near their medians. Compared with <em>Bostock</em> three years earlier, the same court's same subject area produced co-occurrence across two identities rather than four. The cross-identity pattern observed earlier in the decade was no longer reliably present."
+    },
+    {
+      key:'Trans', date:'2025-02-03', year:'2025',
+      identities:['Trans'],
+      title:'Federal recognition revoked',
+      subtitle:'The largest trans spike since 2017 — and this time, no other identity rose with it.',
+      framing:'Policy attack',
+      keywords:['executive order','binary','Pentagon','military','rollback'],
+      body:"The largest trans spike in the dataset since 2017 occurred in the week following Trump's executive orders defining sex as binary in federal policy and reinstating the trans military ban: <strong>1,464 articles</strong>. The other three identities did not register above-baseline volume that week (gay 415, lesbian 106, bisexual 56 — all below their medians). The pattern observed in 2017, in which a trans-targeted policy event activated reporting across all four identity terms, did not recur in 2025. Adversarial coverage of trans identity is, by the close of the dataset, no longer accompanied by elevated coverage of the broader LGBT+ category."
+    }
+  ];
+
+  function init(){
+    var DATA=window.__STORY_DATA;
+    var WEEKLY=DATA.WEEKLY;
+    var pd=d3.timeParse('%Y-%m-%d');
+
+    // Build wide data
+    var bw=d3.group(WEEKLY,function(d){return d.week;});
+    var wideData=Array.from(bw,function(e){
+      var wk=e[0],rows=e[1],o={week:pd(wk)};
+      rows.forEach(function(r){o[r.identity]=+r.value;});
+      KEYS.forEach(function(k){if(!o[k])o[k]=0;});
+      return o;
+    }).sort(function(a,b){return a.week-b.week;});
+
+    // Pre-compute zoom window + peak for each story
+    STORY.forEach(function(s){
+      s.pd=pd(s.date);
+      s.windowStart=d3.timeMonth.offset(s.pd,-6);
+      s.windowEnd=d3.timeMonth.offset(s.pd,6);
+      var bi=d3.bisector(function(d){return d.week;}).left;
+      var idx=Math.min(bi(wideData,s.pd),wideData.length-1);
+      var peakIdx=idx,peakVal=0;
+      for(var i=Math.max(0,idx-2);i<Math.min(wideData.length,idx+3);i++){
+        if(wideData[i] && wideData[i][s.key]>peakVal){peakVal=wideData[i][s.key];peakIdx=i;}
+      }
+      s.peakWeek=wideData[peakIdx].week;
+      s.peakVal=peakVal;
+    });
+
+    // ─── Build steps DOM ───
+    var stepsContainer=document.getElementById('scrolly-steps');
+    if(!stepsContainer)return;
+    stepsContainer.innerHTML='';
+    STORY.forEach(function(s,i){
+      var div=document.createElement('div');
+      div.className='scrolly-step'+(i===0?' is-active':'');
+      div.setAttribute('data-step',i);
+      var num=(i+1).toString().padStart(2,'0');
+      div.innerHTML=
+        '<div class="scrolly-step-inner">'+
+          '<div class="scrolly-step-num">'+num+' · '+s.year+'</div>'+
+          '<div class="scrolly-step-tag" style="background:'+C[s.key]+'22;color:'+C[s.key]+'">'+s.key+' · '+s.framing+'</div>'+
+          '<h3 class="scrolly-step-title">'+s.title+'</h3>'+
+          '<div class="scrolly-step-body">'+s.body+'</div>'+
+        '</div>';
+      stepsContainer.appendChild(div);
+    });
+
+    // ─── Build keyword cloud sets ───
+    var kwContainer=document.getElementById('scrolly-keywords');
+    if(kwContainer){
+      kwContainer.innerHTML='';
+      STORY.forEach(function(s,i){
+        var kwSet=document.createElement('div');
+        kwSet.className='scrolly-kw-set'+(i===0?' is-current':'');
+        kwSet.setAttribute('data-set',i);
+        var sizes=['5.5rem','4rem','6.5rem','3.6rem','5rem','4.4rem'];
+        var positions=[
+          {top:'6%',left:'4%'},
+          {top:'74%',left:'58%'},
+          {top:'28%',left:'52%'},
+          {top:'58%',left:'6%'},
+          {top:'14%',left:'66%'},
+          {top:'82%',left:'22%'}
+        ];
+        s.keywords.forEach(function(kw,j){
+          var span=document.createElement('span');
+          span.className='scrolly-kw';
+          var p=positions[j%positions.length];
+          var rot=((j%2?-1:1)*(2+j*1.4));
+          span.style.cssText='top:'+p.top+';left:'+p.left+';font-size:'+sizes[j%sizes.length]+';transform:rotate('+rot+'deg)';
+          span.textContent=kw;
+          kwSet.appendChild(span);
+        });
+        kwContainer.appendChild(kwSet);
+      });
+    }
+
+    // ─── Drawing logic ───
+    var svgEl=document.getElementById('scrolly-chart');
+    if(!svgEl)return;
+    var currentStep=0;
+
+    function draw(stepIdx){
+      var s=STORY[stepIdx];
+      if(!s)return;
+      var rect=svgEl.getBoundingClientRect();
+      var W=rect.width,H=rect.height;
+      if(W<10||H<10)return;
+
+      var m={top:30,right:20,bottom:30,left:46};
+      var iW=W-m.left-m.right;
+      var iH=H-m.top-m.bottom;
+      if(iW<10||iH<10)return;
+
+      var svg=d3.select(svgEl);
+      svg.attr('viewBox','0 0 '+W+' '+H);
+
+      var g=svg.select('g.main');
+      if(g.empty()){
+        svg.selectAll('*').remove();
+        g=svg.append('g').attr('class','main').attr('transform','translate('+m.left+','+m.top+')');
+      }
+
+      var windowData=wideData.filter(function(d){return d.week>=s.windowStart && d.week<=s.windowEnd;});
+      if(windowData.length<2)return;
+
+      var x=d3.scaleTime().domain([s.windowStart,s.windowEnd]).range([0,iW]);
+      var maxV=d3.max(windowData,function(d){
+        return d3.max(KEYS,function(k){return d[k];});
+      });
+      if(!maxV||maxV<10)maxV=100;
+      var y=d3.scaleLinear().domain([0,maxV*1.18]).range([iH,0]);
+
+      var T=svg.transition().duration(950).ease(d3.easeCubicInOut);
+
+      // Admin bands
+      var admins=[
+        {s:new Date(2017,0,20),e:new Date(2021,0,20),f:'rgba(230,99,99,0.05)'},
+        {s:new Date(2021,0,20),e:new Date(2025,0,20),f:'rgba(99,170,230,0.05)'},
+        {s:new Date(2025,0,20),e:new Date(2029,0,20),f:'rgba(230,99,99,0.05)'}
+      ];
+      var bands=g.selectAll('rect.admin-band').data(admins);
+      bands.exit().remove();
+      bands.enter().append('rect').attr('class','admin-band').attr('y',0)
+        .merge(bands)
+        .transition(T)
+        .attr('x',function(d){return Math.max(0,x(d.s));})
+        .attr('width',function(d){return Math.max(0,Math.min(iW,x(d.e))-Math.max(0,x(d.s)));})
+        .attr('height',iH)
+        .attr('fill',function(d){return d.f;});
+
+      // Y gridlines
+      var yTicks=y.ticks(4);
+      var grid=g.selectAll('line.ygrid').data(yTicks);
+      grid.exit().remove();
+      grid.enter().append('line').attr('class','ygrid')
+        .attr('stroke','rgba(0,0,0,.06)').attr('stroke-width',1).attr('x1',0)
+        .merge(grid)
+        .attr('x2',iW)
+        .transition(T).attr('y1',y).attr('y2',y);
+
+      var yLabels=g.selectAll('text.ylab').data(yTicks);
+      yLabels.exit().remove();
+      yLabels.enter().append('text').attr('class','ylab')
+        .attr('x',-8).attr('text-anchor','end')
+        .style('font-family','DM Mono,monospace').style('font-size','10px').style('fill','rgba(0,0,0,.4)')
+        .merge(yLabels)
+        .transition(T).attr('y',function(d){return y(d)+3;}).text(function(d){return d3.format(',')(d);});
+
+      // X axis
+      var xAxisG=g.selectAll('g.xaxis').data([0]);
+      var xAxisEnter=xAxisG.enter().append('g').attr('class','xaxis');
+      xAxisEnter.merge(xAxisG)
+        .attr('transform','translate(0,'+iH+')')
+        .transition(T)
+        .call(d3.axisBottom(x).ticks(d3.timeMonth.every(2)).tickFormat(d3.timeFormat('%b %Y')).tickSize(0));
+      g.select('g.xaxis').select('.domain').remove();
+      g.select('g.xaxis').selectAll('text').style('font-family','DM Mono,monospace').style('font-size','10.5px').style('fill','#999');
+
+      // Lines per identity
+      var lineGen=d3.line()
+        .x(function(d){return x(d.week);})
+        .y(function(d){return y(d.value);})
+        .curve(d3.curveCatmullRom.alpha(.5));
+
+      var areaGen=d3.area()
+        .x(function(d){return x(d.week);})
+        .y0(iH)
+        .y1(function(d){return y(d.value);})
+        .curve(d3.curveCatmullRom.alpha(.5));
+
+      KEYS.forEach(function(k){
+        var keyData=windowData.map(function(d){return {week:d.week,value:d[k]};});
+        var isActive=(k===s.key);
+        var col=C[k];
+
+        var areaSel=g.selectAll('path.area-'+k).data([keyData]);
+        areaSel.enter().append('path').attr('class','area-'+k)
+          .merge(areaSel)
+          .transition(T)
+          .attr('d',areaGen)
+          .attr('fill',col)
+          .attr('fill-opacity',isActive?0.18:0);
+
+        var lineSel=g.selectAll('path.line-'+k).data([keyData]);
+        lineSel.enter().append('path').attr('class','line-'+k)
+          .attr('fill','none').attr('stroke-linejoin','round').attr('stroke-linecap','round')
+          .merge(lineSel)
+          .transition(T)
+          .attr('d',lineGen)
+          .attr('stroke',col)
+          .attr('stroke-width',isActive?2.6:1.2)
+          .attr('opacity',isActive?1:0.26);
+      });
+
+      // Peak marker
+      var peakX=x(s.peakWeek);
+      var peakY=y(s.peakVal);
+
+      var peakG=g.selectAll('g.peak-marker').data([s]);
+      var peakEnter=peakG.enter().append('g').attr('class','peak-marker');
+      peakEnter.append('line').attr('class','peak-line').attr('stroke-dasharray','3 3').attr('stroke-width',1);
+      peakEnter.append('circle').attr('class','peak-outer').attr('r',13).attr('fill','none').attr('stroke-width',1.5);
+      peakEnter.append('circle').attr('class','peak-inner').attr('r',5).attr('stroke','#f5f2eb').attr('stroke-width',2);
+      peakEnter.append('text').attr('class','peak-val')
+        .style('font-family','DM Mono,monospace').style('font-size','10px').style('font-weight','600').attr('text-anchor','middle');
+      peakEnter.append('text').attr('class','peak-label')
+        .style('font-family','Playfair Display,serif').style('font-style','italic')
+        .style('font-size','13px').style('font-weight','700').attr('text-anchor','middle');
+
+      var peakMerged=peakG.merge(peakEnter);
+      var peakLabelX=Math.max(40,Math.min(iW-40,peakX));
+      peakMerged.select('.peak-line')
+        .attr('stroke',C[s.key])
+        .transition(T).attr('x1',peakX).attr('x2',peakX).attr('y1',peakY).attr('y2',iH);
+      peakMerged.select('.peak-outer')
+        .attr('stroke',C[s.key])
+        .transition(T).attr('cx',peakX).attr('cy',peakY);
+      peakMerged.select('.peak-inner')
+        .attr('fill',C[s.key])
+        .transition(T).attr('cx',peakX).attr('cy',peakY);
+      peakMerged.select('.peak-val')
+        .attr('fill',C[s.key])
+        .transition(T)
+        .attr('x',peakLabelX).attr('y',peakY-36)
+        .text(d3.format(',')(s.peakVal)+' articles');
+      peakMerged.select('.peak-label')
+        .attr('fill',C[s.key])
+        .transition(T)
+        .attr('x',peakLabelX).attr('y',peakY-22)
+        .text(d3.timeFormat('%b %Y')(s.peakWeek));
+
+      // Update meta panel
+      var metaEy=document.getElementById('sm-eyebrow');
+      var metaTi=document.getElementById('sm-title');
+      var metaSu=document.getElementById('sm-sub');
+      if(metaEy){
+        var idents=s.identities||[s.key];
+        var idHtml=idents.map(function(k){return '<span style="color:'+C[k]+'">'+k+'</span>';}).join(' · ');
+        metaEy.innerHTML=s.year+' · '+idHtml;
+      }
+      if(metaTi)metaTi.textContent=s.title;
+      if(metaSu)metaSu.textContent=s.subtitle;
+
+      // Update keyword sets
+      var kwSets=document.querySelectorAll('.scrolly-kw-set');
+      kwSets.forEach(function(el,idx){
+        if(idx===stepIdx)el.classList.add('is-current');
+        else el.classList.remove('is-current');
+      });
+    }
+
+    // ─── Initial render with proper sizing wait ───
+    function tryRender(){
+      var r=svgEl.getBoundingClientRect();
+      if(r.width<20||r.height<20){
+        return requestAnimationFrame(tryRender);
+      }
+      draw(0);
+    }
+    tryRender();
+
+    // ─── Scrollama setup ───
+    var scroller=scrollama();
+    scroller.setup({
+      step:'#scrolly-steps .scrolly-step',
+      offset:0.55
+    }).onStepEnter(function(resp){
+      var idx=+resp.element.getAttribute('data-step');
+      document.querySelectorAll('#scrolly-steps .scrolly-step').forEach(function(el){el.classList.remove('is-active');});
+      resp.element.classList.add('is-active');
+      currentStep=idx;
+      draw(idx);
+    });
+
+    // ─── ResizeObserver per engineering rules ───
+    var resizeTimeout;
+    var ro=new ResizeObserver(function(){
+      clearTimeout(resizeTimeout);
+      resizeTimeout=setTimeout(function(){
+        draw(currentStep);
+        if(scroller && scroller.resize)scroller.resize();
+      },120);
+    });
+    ro.observe(svgEl);
+
+    window.addEventListener('resize',function(){
+      clearTimeout(resizeTimeout);
+      resizeTimeout=setTimeout(function(){
+        draw(currentStep);
+        if(scroller && scroller.resize)scroller.resize();
+      },120);
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',ready);
+  }else{
+    ready();
+  }
 })();
 </script>
 
